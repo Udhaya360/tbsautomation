@@ -7,10 +7,10 @@ Login _Functionality
 	${obj_pass}=		Get Element Text    	${xml}   	password
 	${obj_signin}=		Get Element Text    	${xml}   	login
 	Open Workbook      ${wbook}
- 	${sheet}=        Read Worksheet   Sheet1
+ 	${sheet}=        Read Worksheet   RecipientInfo
   	${rows}=         Get Length  ${sheet}
-	${obj_email1}=	Get cell value    2    A   Sheet1
-	${obj_pass1}=	Get cell value    2    B   Sheet1
+	${obj_email1}=	Get cell value    2    A   RecipientInfo
+	${obj_pass1}=	Get cell value    2    B   RecipientInfo
 
 	Open Browser           https://secure.tbsuat.com/	 Chrome
 	Maximize Browser Window

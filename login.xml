@@ -24,6 +24,7 @@
   <rlookup>//span[@class='v-btn__content']//i[@class='v-icon notranslate mdi mdi-book-search-outline theme--light primary--text']</rlookup>
   <rtype>//div[@class='v-text-field__slot']//input[@placeholder='Search']</rtype>
   <reciselect>(//td[@class='text-center']//button[@class='text-capitalize primary-outlined-btn v-btn v-btn--outlined theme--light v-size--default secondary--text'])[2]</reciselect>
+  <reciselect1>//td[@class='text-center']//button[@class='text-capitalize primary-outlined-btn v-btn v-btn--outlined theme--light v-size--default secondary--text']</reciselect1>
   <itin>//label[text()="ITIN"]</itin>
   <atin>//label[text()="ITIN"]/../../../preceding-sibling::span[1]</atin>
   <ssn>//label[text()="ITIN"]/../../../preceding-sibling::span[2]</ssn>
@@ -41,7 +42,7 @@
   <b2payersales>(//div[@class='v-input--selection-controls__ripple'])[11]</b2payersales>
   <b4fdwh>//em[contains(text(),"4 Federal income tax withheld")]/../following-sibling::section/div/div/div/div/input</b4fdwh>
   <uspsaddr>//div[@class='v-card__actions justify-space-between']//button[@class='text-capitalize border-0 xl v-btn v-btn--has-bg theme--light elevation-1 v-size--x-large primary']</uspsaddr>
-  <saveadd>//button[@class='text-capitalize secondary-btn btn-hover-shrink mr-4 v-btn v-btn--has-bg theme--light elevation-1 v-size--x-large secondary']</saveadd>
+  <saveadd>//span[@class="v-btn__content" and contains(text(),"Save &#038; Add Another")]</saveadd>
   <savecont>//button[@class='text-capitalize primary-btn btn-hover-shrink v-btn v-btn--has-bg theme--light elevation-1 v-size--x-large primary']</savecont>
   <revsavecont>//div[@class='text-center mt-4']//button[@type='button']</revsavecont>
   <adtsavecont>//div[@class='v-card__actions justify-space-between d-flex align-center']//button[@class='text-capitalize primary-btn btn-hover-shrink v-btn v-btn--has-bg theme--light elevation-1 v-size--x-large primary']</adtsavecont>
@@ -61,4 +62,6 @@
   <clicknec>(//span[@class='v-btn__content'and contains(text(),"1099-NEC")])[1]</clicknec>
   <clickfilenec>//span[@class='v-btn__content'and contains(text(),"File Form 1099-NEC for 2021")]</clickfilenec>
   <clickmanual>(//button[@type='button' and @class='btn-hover-shrink primary-btn text-capitalize v-btn v-btn--has-bg theme--light elevation-1 v-size--x-large primary'])[1]</clickmanual>
+  <addressent>//label[@class="v-label theme--light" and contains(text(),"Address you entered")]</addressent>
+  <addresscont>//button[@class='text-capitalize border-0 xl v-btn v-btn--has-bg theme--light elevation-1 v-size--x-large primary']</addresscont>
 </OR>

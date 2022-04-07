@@ -8,9 +8,7 @@ FillForm_1099Nec
 	${obj_spayer}=			Get Element Text	${xml}		spayer
 	${obj_rlookup}=    		Get Element Text    	${xml}   	rlookup
 	${obj_rtype}=			Get Element Text	${xml}		rtype
-	${obj_reciselect}=			Get Element Text	${xml}		reciselect	
-	
-	
+	${obj_reciselect}=			Get Element Text	${xml}		reciselect			
 	${obj_nonemp}=			Get Element Text    	${xml}   	b1nonemp
 	${obj_payersales}=		Get Element Text    	${xml}   	b2payersales
 	${obj_fdwh}=			Get Element Text    	${xml}   	b4fdwh	
@@ -19,50 +17,49 @@ FillForm_1099Nec
 	${obj_clicknec}=			Get Element Text    	${xml} 		clicknec
 	${obj_clickfilenec}=			Get Element Text    	${xml} 		clickfilenec
 	${obj_clickmanual}=			Get Element Text    	${xml} 		clickmanual
-	${obj_revsave}=		Get Element Text    	${xml}		revsavecont
+	${obj_saveadd}=		Get Element Text    	${xml}		saveadd
+	${obj_addressent}=			Get Element Text    	${xml} 		addressent
+	${obj_addresscont}=		Get Element Text    	${xml}		addresscont
+	${obj_reciselect1}=			Get Element Text	${xml}		reciselect1
 	Open Workbook      ${wbook}
- 	${sheet}=        Read Worksheet   Sheet1
+ 	${sheet}=        Read Worksheet   RecipientInfo
   	${rows}=         Get Length  ${sheet}
 	#FOR    ${i}    IN RANGE    2  ${rows}+1
- 	 
-  FOR    ${i}    IN RANGE    2    12
-     	 
-      	
-      	
-	${obj_rtype1}=	Get cell value    ${i}    C   Sheet1
-	${obj_nonemp1}=	Get cell value    ${i}    W   Sheet1
-	${obj_fdwh1}=	Get cell value    ${i}    Y   Sheet1
-	Wait Until Element is Enabled	${obj_selectpayer}	10s
+	${Businessdata}=       Get cell value    5    A   RecipientInfo
 	Click Element           	${obj_selectpayer}		
-	sleep 		10s
-			
-	Input Text			${obj_psearch}			YES Bank		
+	sleep 		10s			
+	Input Text			${obj_psearch}			${Businessdata}		
 	Click Element        		${obj_spayer} 
-	Wait Until Element is Enabled	${obj_rlookup}		3s	
+ 	 
+  FOR    ${i}    IN RANGE    2    ${rows}+1    	     	
+      	
+	${obj_rtype1}=	Get cell value    ${i}    C   RecipientInfo
+	${obj_nonemp1}=	Get cell value    ${i}    W   RecipientInfo
+	${obj_fdwh1}=	Get cell value    ${i}    Y   RecipientInfo
+	
+	Wait Until Element is Enabled	${obj_rlookup}	20s	
 	Click Element           	${obj_rlookup}		
-	sleep 		10s
-			
+	sleep 		10s		
 	Input Text			${obj_rtype}			${obj_rtype1}
-		
-	Click Element        		${obj_reciselect} 		
-	
-	
+	Run Keyword If	${i}== 2  Click Element      ${obj_reciselect}  
+	                             
+	...        ELSE        	Click Element       ${obj_reciselect1}	
+					
 	Input Text			${obj_nonemp}		${obj_nonemp1}	
 	Click Element			${obj_payersales}	
-	Input Text			${obj_fdwh}		${obj_fdwh1}
+	Input Text			${obj_fdwh}		${obj_fdwh1}	
 	
-	Click Element           	${obj_savecont}
-	sleep	10s
-	Run Keyword If	${i}==${rows}  Click Element       ${obj_revsave}  
+	Run Keyword If	${i}==${rows}  Click Element       ${obj_savecont}  
 	                             
-	...        ELSE        	Click Element       ${obj_addnew} 
+	...        ELSE        	Click Element       ${obj_saveadd}
+
+	sleep	5s
+	${passed} =    Run Keyword And Return Status         Wait Until Element Is Enabled       ${obj_addressent}    10s
+	Run Keyword If    ${passed}    Click Element   ${obj_addressent}
+	${passed} =    Run Keyword And Return Status         Wait Until Element Is Enabled       ${obj_addresscont}    10s
+	Run Keyword If    ${passed}    Click Element   ${obj_addresscont} 
 				  
-	sleep	10s
-	Click Element			${obj_clicknec}
-	Wait Until Element is Enabled	${obj_clickfilenec}	20s
-	Click Element 			${obj_clickfilenec}
-	Wait Until Element is Visible	${obj_clickmanual}	500s
-	Click Element 			${obj_clickmanual} 
+	
 		
   END	 
 	
