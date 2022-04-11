@@ -9,7 +9,7 @@ Login in to account
 Click Form 1099-NEC
   ${passed}=        Select_Form
   Sleep  10s
-Fill Form 1099-NEC
+Submit Form 1099-NEC
   ${passed}=        FillForm_1099Nec
   Sleep  15s
 Review and Transmit the order

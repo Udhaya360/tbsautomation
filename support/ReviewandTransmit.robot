@@ -9,7 +9,7 @@ Review_Transmit_form1099Nec
 	Click Element		${obj_revsavecont}
 	sleep	10s		
 	Click Element		${obj_adtsave}
-	sleep 	15s
+	sleep 	25s
 	Click Element		${obj_compltorder}
 	sleep 	5s	
 	Click Element			${obj_ctransmit}
