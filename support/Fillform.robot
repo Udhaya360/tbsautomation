@@ -3,6 +3,9 @@ FillForm_1099Nec
 
 	${xml}=    Parse XML    login.xml
 	${wbook}=     Set Variable     1099NEC_2021.xlsx
+	${obj_nec}=		Get Element Text    	${xml}   	nec
+	${obj_necbt}=		Get Element Text    	${xml}   	necbt
+	${obj_manualb}=		Get Element Text    	${xml}   	manualb
 	${obj_selectpayer}=    		Get Element Text    	${xml}   	selectpayer
 	${obj_psearch}=			Get Element Text	${xml}		psearch
 	${obj_spayer}=			Get Element Text	${xml}		spayer
@@ -25,9 +28,15 @@ FillForm_1099Nec
  	${sheet}=        Read Worksheet   RecipientInfo
   	${rows}=         Get Length  ${sheet}
 	#FOR    ${i}    IN RANGE    2  ${rows}+1
+	Click Element         ${obj_nec}
+	Sleep	3s
+	Click Element         ${obj_necbt}
+	Sleep	3s
+	Click Element         ${obj_manualb}
+	sleep	10s
 	${Businessdata}=       Get cell value    5    A   RecipientInfo
 	Click Element           	${obj_selectpayer}		
-	sleep 		10s			
+	sleep 	10s			
 	Input Text			${obj_psearch}			${Businessdata}		
 	Click Element        		${obj_spayer} 
  	 
@@ -39,7 +48,7 @@ FillForm_1099Nec
 	
 	Wait Until Element is Enabled	${obj_rlookup}	20s	
 	Click Element           	${obj_rlookup}		
-	sleep 		10s		
+	sleep 	10s		
 	Input Text			${obj_rtype}			${obj_rtype1}
 	Run Keyword If	${i}== 2  Click Element      ${obj_reciselect}  
 	                             

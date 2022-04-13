@@ -8,7 +8,7 @@ Login in to account
   Sleep  20s
 Click Form 1099-NEC
   ${passed}=        Select_Form
-  Sleep  10s
+  Sleep  5s
 Submit Form 1099-NEC
   ${passed}=        FillForm_1099Nec
   Sleep  15s

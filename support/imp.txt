@@ -1,8 +1,0 @@
-${passed} =    Run Keyword And Return Status         Wait Until Element Is Enabled       ${obj_address}    10s
-	Run Keyword If    ${passed}    Click Element   ${obj_address}
-	${passed} =    Run Keyword And Return Status         Wait Until Element Is Enabled       ${obj_continue}    10s
-	Run Keyword If    ${passed}    Click Element   ${obj_continue}
-
-
-<address>//label[@class="v-label theme--light" and contains(text(),"Address you entered")]</address>
-  <continue>//button[@class='text-capitalize border-0 xl v-btn v-btn--has-bg theme--light elevation-1 v-size--x-large primary']</continue>
