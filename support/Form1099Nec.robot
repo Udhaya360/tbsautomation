@@ -1,8 +1,8 @@
 *** Keywords ***
 FillForm_1099Nec
 
-	${xml}=    Parse XML    login.xml
-	${wbook}=     Set Variable     1099NEC_2021.xlsx
+	${xml}=    Parse XML    1099Nec.xml
+	${wbook}=     Set Variable     1099Series.xlsx
 	${obj_nec}=		Get Element Text    	${xml}   	nec
 	${obj_necbt}=		Get Element Text    	${xml}   	necbt
 	${obj_manualb}=		Get Element Text    	${xml}   	manualb
@@ -25,7 +25,7 @@ FillForm_1099Nec
 	${obj_addresscont}=		Get Element Text    	${xml}		addresscont
 	${obj_reciselect1}=			Get Element Text	${xml}		reciselect1
 	Open Workbook      ${wbook}
- 	${sheet}=        Read Worksheet   RecipientInfo
+ 	${sheet}=        Read Worksheet   1099Nec
   	${rows}=         Get Length  ${sheet}
 	#FOR    ${i}    IN RANGE    2  ${rows}+1
 	Click Element         ${obj_nec}
@@ -34,7 +34,7 @@ FillForm_1099Nec
 	Sleep	3s
 	Click Element         ${obj_manualb}
 	sleep	10s
-	${Businessdata}=       Get cell value    5    A   RecipientInfo
+	${Businessdata}=       Get cell value    5    A   1099Nec
 	Click Element           	${obj_selectpayer}		
 	sleep 	10s			
 	Input Text			${obj_psearch}			${Businessdata}		
@@ -42,9 +42,9 @@ FillForm_1099Nec
  	 
   FOR    ${i}    IN RANGE    2    ${rows}+1    	     	
       	
-	${obj_rtype1}=	Get cell value    ${i}    C   RecipientInfo
-	${obj_nonemp1}=	Get cell value    ${i}    W   RecipientInfo
-	${obj_fdwh1}=	Get cell value    ${i}    Y   RecipientInfo
+	${obj_rtype1}=	Get cell value    ${i}    C   1099Nec
+	${obj_nonemp1}=	Get cell value    ${i}    W   1099Nec
+	${obj_fdwh1}=	Get cell value    ${i}    Y   1099Nec
 	
 	Wait Until Element is Enabled	${obj_rlookup}	20s	
 	Click Element           	${obj_rlookup}		
