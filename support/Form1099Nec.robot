@@ -50,6 +50,7 @@ FillForm_1099Nec
 	Click Element           	${obj_rlookup}		
 	sleep 	10s		
 	Input Text			${obj_rtype}			${obj_rtype1}
+	
 	Run Keyword If	${i}== 2  Click Element      ${obj_reciselect}  
 	                             
 	...        ELSE        	Click Element       ${obj_reciselect1}	
