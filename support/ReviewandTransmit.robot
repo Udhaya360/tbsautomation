@@ -1,5 +1,5 @@
 *** Keywords ***
-Review_Transmit_form1099Nec
+Review_Transmit_form1099
 
 	${xml}=    Parse XML    login.xml
 	${obj_revsavecont}=		Get Element Text    	${xml}		revsavecont		

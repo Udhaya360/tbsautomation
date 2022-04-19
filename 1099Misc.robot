@@ -26,6 +26,6 @@ Click Start New Form
 Fill Form 1099MISC
   ${passed}=      Select_Form_1099MISC
 Payment for Form 1099MISC
-  ${passed}=      Payment
+  ${passed}=      Review_Transmit_form1099
 
  

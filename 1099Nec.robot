@@ -27,7 +27,7 @@ Submit Form 1099-NEC
   ${passed}=        FillForm_1099Nec
   Sleep  15s
 Review and Transmit the order
-  ${passed}=        Review_Transmit_form1099Nec
+  ${passed}=        Review_Transmit_form1099
 
  
 
