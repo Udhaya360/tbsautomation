@@ -23,9 +23,19 @@ Login in to account
   Sleep  10s
 Click Start New Form
   ${passed}=        Select_Form
-Fill Form 1099MISC
-  ${passed}=      Select_Form_1099MISC
-Payment for Form 1099MISC
-  ${passed}=      Review_Transmit_form1099
+TBS-MISC_TS-001
+  ${passed}=      TBS-MISC_TS-001
+TBS-MISC_TS-002
+  ${passed}=      TBS-MISC_TS-002
+TBS-MISC_TS-003
+  ${passed}=      TBS-MISC_TS-003
+TBS-MISC_TS-004
+  ${passed}=      TBS-MISC_TS-004
+TBS-MISC_TS-005
+  ${passed}=      TBS-MISC_TS-005
+TBS-MISC_TS-006
+  ${passed}=      TBS-MISC_TS-006
+TBS-MISC_TS-007
+  ${passed}=      TBS-MISC_TS-007
 
  

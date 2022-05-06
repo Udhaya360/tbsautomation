@@ -43,7 +43,10 @@
   <line12>//em[contains(text(),"Section")]/../..//following-sibling::section/div/div/div/div/input</line12> 
   <line13>//em[contains(text(),"Excess")]/../..//following-sibling::section/div/div/div/div/input</line13>
   <line14>//em[contains(text(),"Nonqualified")]/../..//following-sibling::section/div/div/div/div/input</line14>
+  <ronline>//label[contains (text(), 'Select if you want to allow this employee to access Form 1099-MISC Online.')]</ronline>
   <save>//span[@class="v-btn__content" and contains(text(),"Save &#038; Add Another")]</save>
+  <ErrorPopup>(//div[@class='mx-auto box-shadow-none v-card v-sheet theme--light'])</ErrorPopup>
+  <FixError>//span[contains (text(), 'Fix Errors')]</FixError>
   <savecon>//span[@class="v-btn__content" and contains(text(),"Save &#038; Continue")]</savecon>
   <address>//label[@class="v-label theme--light" and contains(text(),"Address you entered")]</address>
   <continue>//button[@class='text-capitalize border-0 xl v-btn v-btn--has-bg theme--light elevation-1 v-size--x-large primary']</continue>
