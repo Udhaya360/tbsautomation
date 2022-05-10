@@ -1,8 +1,9 @@
 <OR>
-  <nec>((//div[@class= 'v-list list-hover-none pb-0 pt-0 v-sheet theme--light'])[5]//button[@type='button'])[1]</nec>
-  <necbt>//span[@class='v-btn__content'and contains(text(),"File Form 1099-NEC for 2021")]</necbt>
-  <manualb>//button[@type='button' and @class='btn-hover-shrink primary-btn v-btn v-btn--has-bg theme--light elevation-1 v-size--x-large primary text-capitalize border-0 xl']</manualb>
-  <selectpayer>//button[@class='text-capitalize secondary-btn v-btn v-btn--outlined theme--light v-size--large primary--text']//span[@class='v-btn__content']</selectpayer>
+  <form>((//div[@class= 'v-list list-hover-none pb-0 pt-0 v-sheet theme--light'])[5]//button[@type='button'])[3]</form>
+  <INTform>//span[@class="v-btn__content" and contains (text(),"1099-INT")]</INTform>
+  <taxyr>//span[@class='v-btn__content'and contains(text(),"File Form 1099-INT for 2021")]</taxyr>
+  <manual>//button[@type='button' and @class='btn-hover-shrink primary-btn v-btn v-btn--has-bg theme--light elevation-1 v-size--x-large primary text-capitalize border-0 xl']</manual>
+  <selectpayer>//*[@id='__nuxt']/div/div/div[1]/main/div/div/div[1]/div[2]/div/div/div/form/div[1]/div/div/section/div[2]/div[1]/div[1]/div[2]/div[1]/div[3]/section/button/span</selectpayer>
   <psearch>//div[@class='v-text-field__slot']//input[@placeholder='Search by Payer/Employer Name, Ref.No and EIN/SSN']</psearch>
   <spayer>//button[@class='text-capitalize primary-outlined-btn v-btn v-btn--outlined theme--light v-size--default secondary--text']//span[@class='v-btn__content']</spayer>
   <pname>(//input[@type='text' and @maxlength ='40'])[1]</pname>
@@ -19,7 +20,7 @@
   <rlookup>//span[@class='v-btn__content']//i[@class='v-icon notranslate mdi mdi-book-search-outline theme--light primary--text']</rlookup>
   <rtype>//div[@class='v-text-field__slot']//input[@placeholder='Search']</rtype>
   <reciselect>(//td[@class='text-center']//button[@class='text-capitalize primary-outlined-btn v-btn v-btn--outlined theme--light v-size--default secondary--text'])[2]</reciselect>
-  <reciselect1>//td[@class='text-center']//button[@class='text-capitalize primary-outlined-btn v-btn v-btn--outlined theme--light v-size--default secondary--text']</reciselect1>
+  <reciselect1>//td[@class='text-center']//button[@class='text-capitalize primary-outlined-btn v-btn v-btn--outlined theme--light v-size--default secondary--text'][1]</reciselect1>
   <itin>//label[text()="ITIN"]</itin>
   <atin>//label[text()="ITIN"]/../../../preceding-sibling::span[1]</atin>
   <ssn>//label[text()="ITIN"]/../../../preceding-sibling::span[2]</ssn>
@@ -33,11 +34,26 @@
   <rcity>(//label[contains(text(),"City")]/following-sibling::input)[2]</rcity>
   <rzip>(//label[contains(text(),"ZIP Code")]/following-sibling::input)[2]</rzip>
   <rstate>(//label[contains(text(),"State")]/following-sibling::div/input)[2]</rstate>
-  <b1nonemp>//em[contains(text(),"1 Nonemployee compensation")]/../following-sibling::section/div/div/div/div/input</b1nonemp>
-  <b2payersales>(//div[@class='v-input--selection-controls__ripple'])[11]</b2payersales>
-  <b4fdwh>//em[contains(text(),"4 Federal income tax withheld")]/../following-sibling::section/div/div/div/div/input</b4fdwh>
-  <uspsaddr>//div[@class='v-card__actions justify-space-between']//button[@class='text-capitalize border-0 xl v-btn v-btn--has-bg theme--light elevation-1 v-size--x-large primary']</uspsaddr>
-  <saveadd>//span[@class="v-btn__content" and contains(text(),"Save &#038; Add Another")]</saveadd>
+  
+  <payerrtn>//*[@id='__nuxt']/div/div/div/main/div/div/div[1]/div[2]/div/div/div/form/div[1]/div/div/section/div[2]/div[2]/div/div[1]/div[1]/div[1]/div/div[2]/div/div/div/input</payerrtn>
+  <interest>(//input[@type='text' and @maxlength ='16'])[1]</interest>
+  <early>(//input[@type='text' and @maxlength ='16'])[2]</early>
+  <ussavings>(//input[@type='text' and @maxlength ='16'])[3]</ussavings>
+  <fditw>(//input[@type='text' and @maxlength ='16'])[4]</fditw>
+  <invesmentexp>(//input[@type='text' and @maxlength ='16'])[5]</invesmentexp>
+  <ftaxpaid>(//input[@type='text' and @maxlength ='16'])[6]</ftaxpaid>
+  <fcountry>//*[@id='__nuxt']/div/div/div/main/div/div/div[1]/div[2]/div/div/div/form/div[1]/div/div/section/div[2]/div[2]/div/div[1]/div[1]/div[8]/div/div[2]/div/div/div/input</fcountry>
+  <taxexempt>(//input[@type='text' and @maxlength ='16'])[7]</taxexempt>
+  <privateactivity>(//input[@type='text' and @maxlength ='16'])[8]</privateactivity>
+  <marketdiscount>(//input[@type='text' and @maxlength ='16'])[9]</marketdiscount>
+  <bondpremium>(//input[@type='text' and @maxlength ='16'])[10]</bondpremium>
+  <bptreasury>(//input[@type='text' and @maxlength ='16'])[11]</bptreasury>
+  <bptaxexempt>(//input[@type='text' and @maxlength ='16'])[12]</bptaxexempt>
+  <cusipno>(//input[@type='text' and @maxlength ='13'])[1]</cusipno>
+
+  <usadd>//div[@class='v-card__actions justify-space-between']//button[@class='text-capitalize border-0 xl v-btn v-btn--has-bg theme--light elevation-1 v-size--x-large primary']</usadd>
+  <saveadd>//button[@class='text-capitalize secondary-btn btn-hover-shrink mr-4 v-btn v-btn--has-bg theme--light elevation-1 v-size--x-large secondary']</saveadd>
+  <ignore>//button[@class='text-capitalize border-0 pa-5 v-btn v-btn--has-bg theme--light elevation-1 v-size--default']</ignore>
   <savecont>//button[@class='text-capitalize primary-btn btn-hover-shrink v-btn v-btn--has-bg theme--light elevation-1 v-size--x-large primary']</savecont>
   <addnew>//span[@class="v-btn__content" and contains(text(),"Add New Form")]</addnew>
   <clicknec>(//span[@class='v-btn__content'and contains(text(),"1099-NEC")])[1]</clicknec>
@@ -45,9 +61,6 @@
   <clickmanual>(//button[@type='button' and @class='btn-hover-shrink primary-btn text-capitalize v-btn v-btn--has-bg theme--light elevation-1 v-size--x-large primary'])[1]</clickmanual>
   <addressent>//label[@class="v-label theme--light" and contains(text(),"Address you entered")]</addressent>
   <addresscont>//button[@class='text-capitalize border-0 xl v-btn v-btn--has-bg theme--light elevation-1 v-size--x-large primary']</addresscont>
-  <clear>//a[contains(text(),"Clear")]</clear>
-  <onlinecheckbox>(//div[@class='v-input--selection-controls__ripple'])[9]</onlinecheckbox>
-  <emailaddress>(//label[contains(text(),"Email Address")]/following-sibling::input)[2]</emailaddress>
-  <ErrorPopup>//div[@class='mx-auto box-shadow-none v-card v-sheet theme--light']</ErrorPopup>
-  <FixError>//span[contains (text(), 'Fix Errors')]</FixError>
+
+
 </OR>

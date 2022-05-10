@@ -23,11 +23,27 @@ Login in to account
 Click Form 1099-NEC
   ${passed}=        Select_Form
   Sleep  5s
-Submit Form 1099-NEC
-  ${passed}=        FillForm_1099Nec
+Test Scenario TBS-NEC_TS-001
+  ${passed}=        TBS-NEC_TS-001
   Sleep  15s
-Review and Transmit the order
-  ${passed}=        Review_Transmit_form1099
+Test Scenario TBS-NEC_TS-002
+  ${passed}=        TBS-NEC_TS-002
+  Sleep	 15s
+Test Scenario TBS-NEC_TS-003
+  ${passed}=        TBS-NEC_TS-003
+  Sleep	 15s
+Test Scenario TBS-NEC_TS-004
+  ${passed}=        TBS-NEC_TS-004
+  Sleep	 15s	
+Test Scenario TBS-NEC_TS-005
+  ${passed}=        TBS-NEC_TS-005
+  Sleep	 15s
+Test Scenario TBS-NEC_TS-006
+  ${passed}=        TBS-NEC_TS-006
+  Sleep	 15s
+Test Scenario TBS-NEC_TS-007
+  ${passed}=        TBS-NEC_TS-007
+
 
  
 
