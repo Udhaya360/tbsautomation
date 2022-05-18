@@ -37,7 +37,7 @@ TBS-NEC_TS-004
 	${obj_rtype1}=	Get cell value    5    C   1099_Nec_Scenario
 	${obj_nonemp1}=	Get cell value    5    W   1099_Nec_Scenario
 	${obj_fdwh1}=	Get cell value    5    Y   1099_Nec_Scenario
-	${obj_oaccessemail}=	Get cell value    5    B   1099_Nec_Scenario
+	${obj_oaccessemail}=	Get cell value    10    A   1099_Nec_Scenario
 	
 	Wait Until Element is Enabled	${obj_rlookup}	20s	
 	Click Element           	${obj_rlookup}		

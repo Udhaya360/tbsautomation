@@ -12,6 +12,7 @@ Resource     1099NEC/TBS-NEC_TS-004.robot
 Resource     1099NEC/TBS-NEC_TS-005.robot
 Resource     1099NEC/TBS-NEC_TS-006.robot
 Resource     1099NEC/TBS-NEC_TS-007.robot
+Resource     1099NEC/TBS-NEC_TS-008.robot
 #Resource    ReviewandTransmit.robot
 
 

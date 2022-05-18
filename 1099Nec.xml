@@ -33,8 +33,9 @@
   <rcity>(//label[contains(text(),"City")]/following-sibling::input)[2]</rcity>
   <rzip>(//label[contains(text(),"ZIP Code")]/following-sibling::input)[2]</rzip>
   <rstate>(//label[contains(text(),"State")]/following-sibling::div/input)[2]</rstate>
+  <alstate>(//div[@class="v-menu__content theme--light menuable__content__active"]//div[@class='v-list-item__content']//div[@class='v-list-item__title'])[1]</alstate>
   <b1nonemp>//em[contains(text(),"1 Nonemployee compensation")]/../following-sibling::section/div/div/div/div/input</b1nonemp>
-  <b2payersales>(//div[@class='v-input--selection-controls__ripple'])[11]</b2payersales>
+  <b2payersales>(//div[@class='v-input--selection-controls__input'] //input[@type='checkbox'])[7]</b2payersales>
   <b4fdwh>//em[contains(text(),"4 Federal income tax withheld")]/../following-sibling::section/div/div/div/div/input</b4fdwh>
   <uspsaddr>//div[@class='v-card__actions justify-space-between']//button[@class='text-capitalize border-0 xl v-btn v-btn--has-bg theme--light elevation-1 v-size--x-large primary']</uspsaddr>
   <saveadd>//span[@class="v-btn__content" and contains(text(),"Save &#038; Add Another")]</saveadd>
