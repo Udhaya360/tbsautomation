@@ -4,11 +4,11 @@ Resource   ${CURDIR}/support/Misc_support.robot
 
 *** Test Cases ***
 Login in to account
-  	${xml}=    Parse XML    login.xml
+  	${xml}=    Parse XML    ../Object Repository/login.xml
 	${obj_email}=    	Get Element Text    	${xml}   	email 
 	${obj_pass}=		Get Element Text    	${xml}   	password
 	${obj_signin}=		Get Element Text    	${xml}   	login
-  ${wbook}=     Set Variable     1099Series.xlsx
+  ${wbook}=     Set Variable     ../Test Data/1099Series.xlsx
   Open Workbook      ${wbook}
 	${accEmail}=       Get cell value    2    A   1099Misc
 	${accPass}=       Get cell value    2    B   1099Misc
