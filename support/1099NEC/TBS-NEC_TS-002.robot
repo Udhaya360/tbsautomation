@@ -1,8 +1,8 @@
 *** Keywords ***
 TBS-NEC_TS-002
 
-	${xml}=    Parse XML    1099Nec.xml
-	${wbook}=     Set Variable     1099Series.xlsx
+	${xml}=    Parse XML    ../Object Repository/1099Nec.xml
+	${wbook}=     Set Variable     ../Test Data/1099Series.xlsx
 	${obj_clear}=	Get Element Text	${xml}	clear
 	${obj_selectpayer}=    		Get Element Text    	${xml}   	selectpayer
 	${obj_psearch}=			Get Element Text	${xml}		psearch

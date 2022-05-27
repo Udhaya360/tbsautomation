@@ -1,8 +1,8 @@
 *** Keywords ***
 TBS-NEC_TS-008
 
-	${xml}=    Parse XML    1099Nec.xml
-	${wbook}=     Set Variable     1099Series.xlsx
+	${xml}=    Parse XML    ../Object Repository/1099Nec.xml
+	${wbook}=     Set Variable     ../Test Data/1099Series.xlsx
 	${obj_selectpayer}=    		Get Element Text    	${xml}   	selectpayer
 	${obj_psearch}=			Get Element Text	${xml}		psearch
 	${obj_spayer}=			Get Element Text	${xml}		spayer
@@ -36,10 +36,10 @@ TBS-NEC_TS-008
 	Input Text	${obj_raddress}		${obj_raddress1}
 	Input Text	${obj_rcity}		${obj_rcity1}
 	Input Text	${obj_rzipcode}		${obj_rzipcode1}
-	sleep	10s 
+	sleep	5s 
 	Execute Javascript  document.evaluate('${obj_rstate}', document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null).snapshotItem(0).click();
-  	sleep   20s
-	execute javascript  document.evaluate('(//div[@class='v-menu__content theme--light menuable__content__active']//div[@class='v-list-item__content']//div[@class='v-list-item__title'])[1]', document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null).snapshotItem(0).click();
+  	sleep   2s
+	Execute Javascript  document.evaluate('${obj_alstate}', document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null).snapshotItem(0).click();
 
 	#Input Text			${obj_nonemp}		${obj_nonemp1}	
 	#Click Element			${obj_payersales}	

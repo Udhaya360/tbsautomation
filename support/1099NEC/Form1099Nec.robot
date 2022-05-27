@@ -1,8 +1,8 @@
 *** Keywords ***
 FillForm_1099Nec
 
-	${xml}=    Parse XML    1099Nec.xml
-	${wbook}=     Set Variable     1099Series.xlsx
+	${xml}=    Parse XML    ../Object Repository/1099Nec.xml
+	${wbook}=     Set Variable     ../Test Data/1099Series.xlsx
 	${obj_nec}=		Get Element Text    	${xml}   	nec
 	${obj_necbt}=		Get Element Text    	${xml}   	necbt
 	${obj_manualb}=		Get Element Text    	${xml}   	manualb

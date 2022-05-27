@@ -1,7 +1,7 @@
 *** Keywords ***
 Select_Form
 
-	${xml}=    Parse XML    login.xml
+	${xml}=    Parse XML    ../Object Repository/login.xml
 	${obj_start}=    	Get Element Text    	${xml}   	start
 	${obj_newform}=		Get Element Text    	${xml}   	form
 	
