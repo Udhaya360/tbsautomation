@@ -2,7 +2,9 @@
 TBS-MISC_TS-006
 
 
-	${xml}=    Parse XML    1099Misc.xml
+	${logid}=     Get Environment Variable     logid
+	Log to console       runid is ${logid}
+	${xml}=    Parse XML    ../Object repository/1099Misc.xml
 	${obj_recipient}=		Get Element Text    	${xml}   	recipient
 	${obj_rsearch}=		Get Element Text    	${xml}   	rsearch
 	${obj_rselect}=		Get Element Text    	${xml}   	rselect
@@ -30,7 +32,7 @@ TBS-MISC_TS-006
 	${obj_address}=		Get Element Text    	${xml}          address
 
 
-  ${wbook}=     Set Variable     1099Series.xlsx
+  ${wbook}=     Set Variable     ../Test Data/1099Series.xlsx
   Open Workbook      ${wbook}
   ${sheet}=        Read Worksheet   1099Misc
   ${rows}=         Get Length  ${sheet}

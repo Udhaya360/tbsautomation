@@ -1,10 +1,11 @@
 *** Settings ***
-Resource   ${CURDIR}/support/Misc_support.robot
+Resource   ../support/Misc_support.robot
 
 
 *** Test Cases ***
 Login in to account
-  	${xml}=    Parse XML    ../Object Repository/login.xml
+	ssettings
+  	${xml}=    Parse XML    ../Object repository/login.xml
 	${obj_email}=    	Get Element Text    	${xml}   	email 
 	${obj_pass}=		Get Element Text    	${xml}   	password
 	${obj_signin}=		Get Element Text    	${xml}   	login
@@ -18,12 +19,14 @@ Login in to account
 	Maximize Browser Window
 	input text			${obj_email}		${accEmail}
 	input text			${obj_pass}		${accPass}
+	Sleep  10s
 	Click button			${obj_signin}
 
   Sleep  10s
 Click Start New Form
   ${passed}=        Select_Form
 TBS-MISC_TS-001
+
   ${passed}=      TBS-MISC_TS-001
 TBS-MISC_TS-002
   ${passed}=      TBS-MISC_TS-002
@@ -38,4 +41,6 @@ TBS-MISC_TS-006
 TBS-MISC_TS-007
   ${passed}=      TBS-MISC_TS-007
 
- 
+createlog
+  ${logid}=     Get Environment Variable     logid
+  createh   ${logid}

@@ -1,8 +1,9 @@
 *** Keywords ***
 TBS-MISC_TS-002
 
-
-	${xml}=    Parse XML    1099Misc.xml
+	${logid}=     Get Environment Variable     logid
+	Log to console       runid is ${logid}
+	${xml}=    Parse XML    ../Object repository/1099Misc.xml
 	${obj_business}=		Get Element Text    	${xml}   	business
 	${obj_bsearch}=		Get Element Text    	${xml}   	bsearch
 	${obj_bselect}=		Get Element Text    	${xml}   	bselect
@@ -18,7 +19,7 @@ TBS-MISC_TS-002
 
 	sleep     2s
 	
-  ${wbook}=     Set Variable     1099Series.xlsx
+  ${wbook}=     Set Variable     ../Test Data/1099Series.xlsx
   Open Workbook      ${wbook}
   ${sheet}=        Read Worksheet   1099Misc
   ${rows}=         Get Length  ${sheet}
