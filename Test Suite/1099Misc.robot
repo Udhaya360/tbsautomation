@@ -6,14 +6,14 @@ Resource   ../support/Misc_support.robot
 Login in to account
 	ssettings
   	${xml}=    Parse XML    ../Object repository/login.xml
-	${obj_email}=    	Get Element Text    	${xml}   	email 
-	${obj_pass}=		Get Element Text    	${xml}   	password
-	${obj_signin}=		Get Element Text    	${xml}   	login
+	${obj_email}=    	fndbget      select objvalue from tb_autoobj where objname='uid'
+	${obj_pass}=		fndbget      select objvalue from tb_autoobj where objname='pwd'
+	${obj_signin}=		fndbget      select objvalue from tb_autoobj where objname='signin'
   ${wbook}=     Set Variable     ../Test Data/1099Series.xlsx
   Open Workbook      ${wbook}
-	${accEmail}=       Get cell value    2    A   1099Misc
-	${accPass}=       Get cell value    2    B   1099Misc
-	${siteURL}=       Get cell value    8    A   1099Misc
+	${accEmail}=       fndbget      select Userid from tb_autodata where SiteName='UAT_MISC'
+	${accPass}=       fndbget      select pwd from tb_autodata where SiteName='UAT_MISC'
+	${siteURL}=       fndbget      select Siteid from tb_autodata where SiteName='UAT_MISC'
 
 	Open Browser           ${siteURL}	 Chrome
 	Maximize Browser Window
