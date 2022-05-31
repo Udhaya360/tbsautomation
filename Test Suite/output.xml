@@ -1,0 +1,2532 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.3 (Python 3.9.6 on win32)" generated="20220531 13:47:43.592" rpa="false" schemaversion="2">
+<suite id="s1" name="1099Misc" source="C:\Users\STS360-UDHAYA S\Desktop\Jenkins workspace\RobotFramework\Test Suite\1099Misc.robot">
+<test id="s1-t1" name="Login in to account">
+<kw name="ssettings" library="Misc_support">
+<kw name="Logid" library="associatelib">
+<var>${logid}</var>
+<msg timestamp="20220531 13:47:45.212" level="INFO">${logid} = Log_20220531134745</msg>
+<status status="PASS" starttime="20220531 13:47:45.212" endtime="20220531 13:47:45.212"/>
+</kw>
+<kw name="Set Environment Variable" library="OperatingSystem">
+<arg>logid</arg>
+<arg>${logid}</arg>
+<doc>Sets an environment variable to a specified value.</doc>
+<msg timestamp="20220531 13:47:45.213" level="INFO">Environment variable 'logid' set to value 'Log_20220531134745'.</msg>
+<status status="PASS" starttime="20220531 13:47:45.213" endtime="20220531 13:47:45.213"/>
+</kw>
+<status status="PASS" starttime="20220531 13:47:45.211" endtime="20220531 13:47:45.213"/>
+</kw>
+<kw name="Parse Xml" library="XML">
+<var>${xml}</var>
+<arg>../Object repository/login.xml</arg>
+<doc>Parses the given XML file or string into an element structure.</doc>
+<msg timestamp="20220531 13:47:45.216" level="INFO">${xml} = &lt;Element 'OR' at 0x0000027D31E809F0&gt;</msg>
+<status status="PASS" starttime="20220531 13:47:45.213" endtime="20220531 13:47:45.216"/>
+</kw>
+<kw name="Fndbget" library="associatelib">
+<var>${obj_email}</var>
+<arg>select objvalue from tb_autoobj where objname='uid'</arg>
+<msg timestamp="20220531 13:47:48.928" level="INFO">${obj_email} = //label[contains(text(),"Email Address")]/following-sibling::input[1]</msg>
+<status status="PASS" starttime="20220531 13:47:45.217" endtime="20220531 13:47:48.928"/>
+</kw>
+<kw name="Fndbget" library="associatelib">
+<var>${obj_pass}</var>
+<arg>select objvalue from tb_autoobj where objname='pwd'</arg>
+<msg timestamp="20220531 13:47:49.955" level="INFO">${obj_pass} = //label[contains(text(),"Password")]/following-sibling::input[1]</msg>
+<status status="PASS" starttime="20220531 13:47:48.929" endtime="20220531 13:47:49.955"/>
+</kw>
+<kw name="Fndbget" library="associatelib">
+<var>${obj_signin}</var>
+<arg>select objvalue from tb_autoobj where objname='signin'</arg>
+<msg timestamp="20220531 13:47:50.987" level="INFO">${obj_signin} = (//button[@type="button"])[4]</msg>
+<status status="PASS" starttime="20220531 13:47:49.958" endtime="20220531 13:47:50.987"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${wbook}</var>
+<arg>../Test Data/1099Series.xlsx</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220531 13:47:50.990" level="INFO">${wbook} = ../Test Data/1099Series.xlsx</msg>
+<status status="PASS" starttime="20220531 13:47:50.989" endtime="20220531 13:47:50.990"/>
+</kw>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${wbook}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<msg timestamp="20220531 13:47:51.152" level="INFO">Opened workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x0000027D31E9B6A0&gt;</msg>
+<status status="PASS" starttime="20220531 13:47:50.992" endtime="20220531 13:47:51.152"/>
+</kw>
+<kw name="Fndbget" library="associatelib">
+<var>${accEmail}</var>
+<arg>select Userid from tb_autodata where SiteName='UAT_MISC'</arg>
+<msg timestamp="20220531 13:47:52.250" level="INFO">${accEmail} = udhaya.g+april05@dotnetethics.com</msg>
+<status status="PASS" starttime="20220531 13:47:51.153" endtime="20220531 13:47:52.250"/>
+</kw>
+<kw name="Fndbget" library="associatelib">
+<var>${accPass}</var>
+<arg>select pwd from tb_autodata where SiteName='UAT_MISC'</arg>
+<msg timestamp="20220531 13:47:53.279" level="INFO">${accPass} = Span@123</msg>
+<status status="PASS" starttime="20220531 13:47:52.252" endtime="20220531 13:47:53.279"/>
+</kw>
+<kw name="Fndbget" library="associatelib">
+<var>${siteURL}</var>
+<arg>select Siteid from tb_autodata where SiteName='UAT_MISC'</arg>
+<msg timestamp="20220531 13:47:54.314" level="INFO">${siteURL} = https://secure.tbsuat.com/login</msg>
+<status status="PASS" starttime="20220531 13:47:53.280" endtime="20220531 13:47:54.314"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${siteURL}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220531 13:47:54.318" level="INFO">Opening browser 'Chrome' to base url 'https://secure.tbsuat.com/login'.</msg>
+<status status="PASS" starttime="20220531 13:47:54.316" endtime="20220531 13:48:00.307"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220531 13:48:00.310" endtime="20220531 13:48:00.469"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${obj_email}</arg>
+<arg>${accEmail}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220531 13:48:00.471" level="INFO">Typing text 'udhaya.g+april05@dotnetethics.com' into text field '//label[contains(text(),"Email Address")]/following-sibling::input[1]'.</msg>
+<status status="PASS" starttime="20220531 13:48:00.470" endtime="20220531 13:48:00.878"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${obj_pass}</arg>
+<arg>${accPass}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220531 13:48:00.880" level="INFO">Typing text 'Span@123' into text field '//label[contains(text(),"Password")]/following-sibling::input[1]'.</msg>
+<status status="PASS" starttime="20220531 13:48:00.879" endtime="20220531 13:48:01.034"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>10s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220531 13:48:11.039" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" starttime="20220531 13:48:01.035" endtime="20220531 13:48:11.039"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${obj_signin}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220531 13:48:11.040" level="INFO">Clicking button '(//button[@type="button"])[4]'.</msg>
+<status status="PASS" starttime="20220531 13:48:11.040" endtime="20220531 13:48:11.770"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>10s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220531 13:48:21.782" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" starttime="20220531 13:48:11.773" endtime="20220531 13:48:21.782"/>
+</kw>
+<status status="PASS" starttime="20220531 13:47:45.211" endtime="20220531 13:48:21.783"/>
+</test>
+<test id="s1-t2" name="Click Start New Form">
+<kw name="Select_Form" library="Home">
+<var>${passed}</var>
+<kw name="Parse Xml" library="XML">
+<var>${xml}</var>
+<arg>../Object repository/login.xml</arg>
+<doc>Parses the given XML file or string into an element structure.</doc>
+<msg timestamp="20220531 13:48:21.786" level="INFO">${xml} = &lt;Element 'OR' at 0x0000027D32087F90&gt;</msg>
+<status status="PASS" starttime="20220531 13:48:21.785" endtime="20220531 13:48:21.786"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_start}</var>
+<arg>${xml}</arg>
+<arg>start</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:21.786" level="INFO">${obj_start} = //i[@class="v-icon notranslate v-icon--right mdi mdi-arrow-down-drop-circle-outline theme--dark"]</msg>
+<status status="PASS" starttime="20220531 13:48:21.786" endtime="20220531 13:48:21.787"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_newform}</var>
+<arg>${xml}</arg>
+<arg>form</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:21.787" level="INFO">${obj_newform} = (//div[@class='v-list-item__content'])[1]</msg>
+<status status="PASS" starttime="20220531 13:48:21.787" endtime="20220531 13:48:21.787"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${obj_start}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220531 13:48:21.787" level="INFO">Clicking element '//i[@class="v-icon notranslate v-icon--right mdi mdi-arrow-down-drop-circle-outline theme--dark"]'.</msg>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220531 13:48:22.002" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220531 13:48:21.799" endtime="20220531 13:48:22.002"/>
+</kw>
+<msg timestamp="20220531 13:48:22.021" level="FAIL">Element with locator '//i[@class="v-icon notranslate v-icon--right mdi mdi-arrow-down-drop-circle-outline theme--dark"]' not found.</msg>
+<status status="FAIL" starttime="20220531 13:48:21.787" endtime="20220531 13:48:22.021"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:22.022" endtime="20220531 13:48:22.022"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${obj_newform}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:22.022" endtime="20220531 13:48:22.022"/>
+</kw>
+<status status="FAIL" starttime="20220531 13:48:21.785" endtime="20220531 13:48:22.023"/>
+</kw>
+<status status="FAIL" starttime="20220531 13:48:21.784" endtime="20220531 13:48:22.024">Element with locator '//i[@class="v-icon notranslate v-icon--right mdi mdi-arrow-down-drop-circle-outline theme--dark"]' not found.</status>
+</test>
+<test id="s1-t3" name="TBS-MISC_TS-001">
+<kw name="TBS-MISC_TS-001" library="TBS-MISC_TS-001">
+<var>${passed}</var>
+<kw name="Get Environment Variable" library="OperatingSystem">
+<var>${logid}</var>
+<arg>logid</arg>
+<doc>Returns the value of an environment variable with the given name.</doc>
+<msg timestamp="20220531 13:48:22.026" level="INFO">${logid} = Log_20220531134745</msg>
+<status status="PASS" starttime="20220531 13:48:22.026" endtime="20220531 13:48:22.026"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>runid is ${logid}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220531 13:48:22.026" endtime="20220531 13:48:22.027"/>
+</kw>
+<kw name="Parse Xml" library="XML">
+<var>${xml}</var>
+<arg>../Object repository/1099Misc.xml</arg>
+<doc>Parses the given XML file or string into an element structure.</doc>
+<msg timestamp="20220531 13:48:22.033" level="INFO">${xml} = &lt;Element 'OR' at 0x0000027D322C0810&gt;</msg>
+<status status="PASS" starttime="20220531 13:48:22.027" endtime="20220531 13:48:22.033"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_miscform}</var>
+<arg>${xml}</arg>
+<arg>miscform</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:22.034" level="INFO">${obj_miscform} = //span[@class="v-btn__content" and contains (text(),"1099-MISC")]</msg>
+<status status="PASS" starttime="20220531 13:48:22.033" endtime="20220531 13:48:22.034"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_taxyear2021}</var>
+<arg>${xml}</arg>
+<arg>taxyear2021</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:22.034" level="INFO">${obj_taxyear2021} = //span[@class="v-btn__content" and contains (text(),"File Form 1099-MISC for 2021")]</msg>
+<status status="PASS" starttime="20220531 13:48:22.034" endtime="20220531 13:48:22.034"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_manual}</var>
+<arg>${xml}</arg>
+<arg>manual</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:22.034" level="INFO">${obj_manual} = //button[@type='button' and @class='btn-hover-shrink primary-btn v-btn v-btn--has-bg theme--light elevation-1 v-size--x-large primary text-capitalize border-0 xl']</msg>
+<status status="PASS" starttime="20220531 13:48:22.034" endtime="20220531 13:48:22.034"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_business}</var>
+<arg>${xml}</arg>
+<arg>business</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:22.035" level="INFO">${obj_business} = //span[@class='v-btn__content' and contains(text(), 'Select / Add Business')]</msg>
+<status status="PASS" starttime="20220531 13:48:22.035" endtime="20220531 13:48:22.035"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_bsearch}</var>
+<arg>${xml}</arg>
+<arg>bsearch</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:22.035" level="INFO">${obj_bsearch} = //input[@type='text' and @placeholder='Search by Payer/Employer Name, Ref.No and EIN/SSN']</msg>
+<status status="PASS" starttime="20220531 13:48:22.035" endtime="20220531 13:48:22.035"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_bselect}</var>
+<arg>${xml}</arg>
+<arg>bselect</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:22.035" level="INFO">${obj_bselect} = //button[@class='text-capitalize primary-outlined-btn v-btn v-btn--outlined theme--light v-size--default secondary--text' and @type='button']</msg>
+<status status="PASS" starttime="20220531 13:48:22.035" endtime="20220531 13:48:22.036"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_recipient}</var>
+<arg>${xml}</arg>
+<arg>recipient</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:22.036" level="INFO">${obj_recipient} = //span[@class='recipent-name mr-auto' and contains(text(), 'Search by Recipient Name/TIN')]</msg>
+<status status="PASS" starttime="20220531 13:48:22.036" endtime="20220531 13:48:22.036"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_rsearch}</var>
+<arg>${xml}</arg>
+<arg>rsearch</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:22.036" level="INFO">${obj_rsearch} = //input[@type='text' and @placeholder='Search by Employee/Recipient Name or TIN']</msg>
+<status status="PASS" starttime="20220531 13:48:22.036" endtime="20220531 13:48:22.036"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_rselect}</var>
+<arg>${xml}</arg>
+<arg>rselect</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:22.037" level="INFO">${obj_rselect} = //div[@class='pa-2 border-bottom v-list-item v-list-item--link theme--light']</msg>
+<status status="PASS" starttime="20220531 13:48:22.037" endtime="20220531 13:48:22.037"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line1}</var>
+<arg>${xml}</arg>
+<arg>line1</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:22.038" level="INFO">${obj_line1} = //em[contains(text(),"Rents")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:48:22.037" endtime="20220531 13:48:22.038"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_save}</var>
+<arg>${xml}</arg>
+<arg>save</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:22.039" level="INFO">${obj_save} = //span[@class="v-btn__content" and contains(text(),"Save &amp; Add Another")]</msg>
+<status status="PASS" starttime="20220531 13:48:22.038" endtime="20220531 13:48:22.039"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_savecon}</var>
+<arg>${xml}</arg>
+<arg>savecon</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:22.039" level="INFO">${obj_savecon} = //span[@class="v-btn__content" and contains(text(),"Save &amp; Continue")]</msg>
+<status status="PASS" starttime="20220531 13:48:22.039" endtime="20220531 13:48:22.039"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_continue}</var>
+<arg>${xml}</arg>
+<arg>continue</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:22.040" level="INFO">${obj_continue} = //button[@class='text-capitalize border-0 xl v-btn v-btn--has-bg theme--light elevation-1 v-size--x-large primary']</msg>
+<status status="PASS" starttime="20220531 13:48:22.039" endtime="20220531 13:48:22.040"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_address}</var>
+<arg>${xml}</arg>
+<arg>address</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:22.040" level="INFO">${obj_address} = //label[@class="v-label theme--light" and contains(text(),"Address you entered")]</msg>
+<status status="PASS" starttime="20220531 13:48:22.040" endtime="20220531 13:48:22.040"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220531 13:48:24.043" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20220531 13:48:22.040" endtime="20220531 13:48:24.043"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${obj_miscform}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220531 13:48:24.044" level="INFO">Clicking element '//span[@class="v-btn__content" and contains (text(),"1099-MISC")]'.</msg>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220531 13:48:24.268" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220531 13:48:24.067" endtime="20220531 13:48:24.268"/>
+</kw>
+<msg timestamp="20220531 13:48:24.270" level="FAIL">Element with locator '//span[@class="v-btn__content" and contains (text(),"1099-MISC")]' not found.</msg>
+<status status="FAIL" starttime="20220531 13:48:24.044" endtime="20220531 13:48:24.270"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:24.270" endtime="20220531 13:48:24.270"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${obj_taxyear2021}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:24.270" endtime="20220531 13:48:24.270"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:24.271" endtime="20220531 13:48:24.271"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${obj_manual}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:24.271" endtime="20220531 13:48:24.271"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${wbook}</var>
+<arg>../Test Data/1099Series.xlsx</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:24.271" endtime="20220531 13:48:24.271"/>
+</kw>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${wbook}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:24.271" endtime="20220531 13:48:24.271"/>
+</kw>
+<kw name="Read Worksheet" library="RPA.Excel.Files">
+<var>${sheet}</var>
+<arg>1099Misc</arg>
+<doc>Read the content of a worksheet into a list of dictionaries.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:24.271" endtime="20220531 13:48:24.271"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${rows}</var>
+<arg>${sheet}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:24.271" endtime="20220531 13:48:24.271"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Businessdata}</var>
+<arg>5</arg>
+<arg>A</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:24.271" endtime="20220531 13:48:24.271"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${obj_business}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:24.272" endtime="20220531 13:48:24.272"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${obj_business}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:24.272" endtime="20220531 13:48:24.272"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${obj_bsearch}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:24.272" endtime="20220531 13:48:24.272"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${obj_bsearch}</arg>
+<arg>${Businessdata}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:24.272" endtime="20220531 13:48:24.272"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${obj_bselect}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:24.272" endtime="20220531 13:48:24.272"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${obj_bselect}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:24.272" endtime="20220531 13:48:24.272"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${RecipientTIN}</var>
+<arg>2</arg>
+<arg>C</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:24.272" endtime="20220531 13:48:24.272"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Rents}</var>
+<arg>2</arg>
+<arg>D</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:24.273" endtime="20220531 13:48:24.273"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>7s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:24.273" endtime="20220531 13:48:24.273"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${obj_recipient}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:24.273" endtime="20220531 13:48:24.273"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${obj_rsearch}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:24.273" endtime="20220531 13:48:24.273"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${obj_rsearch}</arg>
+<arg>${RecipientTIN}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:24.273" endtime="20220531 13:48:24.273"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${obj_rselect}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:24.273" endtime="20220531 13:48:24.273"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${obj_rselect}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:24.273" endtime="20220531 13:48:24.273"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${obj_line1}</arg>
+<arg>${Rents}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:24.274" endtime="20220531 13:48:24.274"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${obj_save}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:24.274" endtime="20220531 13:48:24.274"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:24.274" endtime="20220531 13:48:24.274"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${passed}</var>
+<arg>Wait Until Element Is Enabled</arg>
+<arg>${obj_address}</arg>
+<arg>10s</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:24.274" endtime="20220531 13:48:24.274"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${passed}</arg>
+<arg>Click Element</arg>
+<arg>${obj_address}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:24.274" endtime="20220531 13:48:24.274"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${passed}</var>
+<arg>Wait Until Element Is Enabled</arg>
+<arg>${obj_continue}</arg>
+<arg>10s</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:24.274" endtime="20220531 13:48:24.274"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${passed}</arg>
+<arg>Click Element</arg>
+<arg>${obj_continue}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:24.274" endtime="20220531 13:48:24.275"/>
+</kw>
+<status status="FAIL" starttime="20220531 13:48:22.026" endtime="20220531 13:48:24.275"/>
+</kw>
+<status status="FAIL" starttime="20220531 13:48:22.025" endtime="20220531 13:48:24.276">Element with locator '//span[@class="v-btn__content" and contains (text(),"1099-MISC")]' not found.</status>
+</test>
+<test id="s1-t4" name="TBS-MISC_TS-002">
+<kw name="TBS-MISC_TS-002" library="TBS-MISC_TS-002">
+<var>${passed}</var>
+<kw name="Get Environment Variable" library="OperatingSystem">
+<var>${logid}</var>
+<arg>logid</arg>
+<doc>Returns the value of an environment variable with the given name.</doc>
+<msg timestamp="20220531 13:48:24.278" level="INFO">${logid} = Log_20220531134745</msg>
+<status status="PASS" starttime="20220531 13:48:24.278" endtime="20220531 13:48:24.278"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>runid is ${logid}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220531 13:48:24.279" endtime="20220531 13:48:24.279"/>
+</kw>
+<kw name="Parse Xml" library="XML">
+<var>${xml}</var>
+<arg>../Object repository/1099Misc.xml</arg>
+<doc>Parses the given XML file or string into an element structure.</doc>
+<msg timestamp="20220531 13:48:24.280" level="INFO">${xml} = &lt;Element 'OR' at 0x0000027D322DF090&gt;</msg>
+<status status="PASS" starttime="20220531 13:48:24.279" endtime="20220531 13:48:24.280"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_business}</var>
+<arg>${xml}</arg>
+<arg>business</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:24.280" level="INFO">${obj_business} = //span[@class='v-btn__content' and contains(text(), 'Select / Add Business')]</msg>
+<status status="PASS" starttime="20220531 13:48:24.280" endtime="20220531 13:48:24.280"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_bsearch}</var>
+<arg>${xml}</arg>
+<arg>bsearch</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:24.281" level="INFO">${obj_bsearch} = //input[@type='text' and @placeholder='Search by Payer/Employer Name, Ref.No and EIN/SSN']</msg>
+<status status="PASS" starttime="20220531 13:48:24.280" endtime="20220531 13:48:24.281"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_bselect}</var>
+<arg>${xml}</arg>
+<arg>bselect</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:24.281" level="INFO">${obj_bselect} = //button[@class='text-capitalize primary-outlined-btn v-btn v-btn--outlined theme--light v-size--default secondary--text' and @type='button']</msg>
+<status status="PASS" starttime="20220531 13:48:24.281" endtime="20220531 13:48:24.281"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_recipient}</var>
+<arg>${xml}</arg>
+<arg>recipient</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:24.281" level="INFO">${obj_recipient} = //span[@class='recipent-name mr-auto' and contains(text(), 'Search by Recipient Name/TIN')]</msg>
+<status status="PASS" starttime="20220531 13:48:24.281" endtime="20220531 13:48:24.281"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_rsearch}</var>
+<arg>${xml}</arg>
+<arg>rsearch</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:24.282" level="INFO">${obj_rsearch} = //input[@type='text' and @placeholder='Search by Employee/Recipient Name or TIN']</msg>
+<status status="PASS" starttime="20220531 13:48:24.281" endtime="20220531 13:48:24.282"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_rselect}</var>
+<arg>${xml}</arg>
+<arg>rselect</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:24.282" level="INFO">${obj_rselect} = //div[@class='pa-2 border-bottom v-list-item v-list-item--link theme--light']</msg>
+<status status="PASS" starttime="20220531 13:48:24.282" endtime="20220531 13:48:24.282"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line1}</var>
+<arg>${xml}</arg>
+<arg>line1</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:24.282" level="INFO">${obj_line1} = //em[contains(text(),"Rents")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:48:24.282" endtime="20220531 13:48:24.282"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_save}</var>
+<arg>${xml}</arg>
+<arg>save</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:24.283" level="INFO">${obj_save} = //span[@class="v-btn__content" and contains(text(),"Save &amp; Add Another")]</msg>
+<status status="PASS" starttime="20220531 13:48:24.283" endtime="20220531 13:48:24.283"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_savecon}</var>
+<arg>${xml}</arg>
+<arg>savecon</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:24.283" level="INFO">${obj_savecon} = //span[@class="v-btn__content" and contains(text(),"Save &amp; Continue")]</msg>
+<status status="PASS" starttime="20220531 13:48:24.283" endtime="20220531 13:48:24.283"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_continue}</var>
+<arg>${xml}</arg>
+<arg>continue</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:24.284" level="INFO">${obj_continue} = //button[@class='text-capitalize border-0 xl v-btn v-btn--has-bg theme--light elevation-1 v-size--x-large primary']</msg>
+<status status="PASS" starttime="20220531 13:48:24.283" endtime="20220531 13:48:24.284"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_address}</var>
+<arg>${xml}</arg>
+<arg>address</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:24.284" level="INFO">${obj_address} = //label[@class="v-label theme--light" and contains(text(),"Address you entered")]</msg>
+<status status="PASS" starttime="20220531 13:48:24.284" endtime="20220531 13:48:24.284"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220531 13:48:26.285" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20220531 13:48:24.284" endtime="20220531 13:48:26.285"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${wbook}</var>
+<arg>../Test Data/1099Series.xlsx</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220531 13:48:26.286" level="INFO">${wbook} = ../Test Data/1099Series.xlsx</msg>
+<status status="PASS" starttime="20220531 13:48:26.286" endtime="20220531 13:48:26.286"/>
+</kw>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${wbook}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<msg timestamp="20220531 13:48:26.286" level="INFO">Closing workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x0000027D31E9B6A0&gt;</msg>
+<msg timestamp="20220531 13:48:26.386" level="INFO">Opened workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x0000027D31E9B6A0&gt;</msg>
+<status status="PASS" starttime="20220531 13:48:26.286" endtime="20220531 13:48:26.387"/>
+</kw>
+<kw name="Read Worksheet" library="RPA.Excel.Files">
+<var>${sheet}</var>
+<arg>1099Misc</arg>
+<doc>Read the content of a worksheet into a list of dictionaries.</doc>
+<msg timestamp="20220531 13:48:26.391" level="INFO">${sheet} = [{'A': None, 'B': None, 'C': 'TIN*', 'D': '1) Rents', 'E': '2) Royalties', 'F': '3) Other income', 'G': '4) Federal income tax withheld', 'H': '5) Fishing boat proceeds', 'I': '6) Medical and health c...</msg>
+<status status="PASS" starttime="20220531 13:48:26.387" endtime="20220531 13:48:26.391"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${rows}</var>
+<arg>${sheet}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20220531 13:48:26.392" level="INFO">Length is 26</msg>
+<msg timestamp="20220531 13:48:26.392" level="INFO">${rows} = 26</msg>
+<status status="PASS" starttime="20220531 13:48:26.391" endtime="20220531 13:48:26.392"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${RecipientTIN}</var>
+<arg>3</arg>
+<arg>C</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:48:26.392" level="INFO">${RecipientTIN} = 245685964</msg>
+<status status="PASS" starttime="20220531 13:48:26.392" endtime="20220531 13:48:26.392"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Rents}</var>
+<arg>3</arg>
+<arg>D</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:48:26.392" level="INFO">${Rents} = 501</msg>
+<status status="PASS" starttime="20220531 13:48:26.392" endtime="20220531 13:48:26.393"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>7s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220531 13:48:33.397" level="INFO">Slept 7 seconds</msg>
+<status status="PASS" starttime="20220531 13:48:26.393" endtime="20220531 13:48:33.398"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${obj_recipient}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220531 13:48:33.400" level="INFO">Clicking element '//span[@class='recipent-name mr-auto' and contains(text(), 'Search by Recipient Name/TIN')]'.</msg>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220531 13:48:57.827" level="FAIL">WebDriverException: Message: chrome not reachable
+  (Session info: chrome=101.0.4951.67)
+</msg>
+<status status="FAIL" starttime="20220531 13:48:45.626" endtime="20220531 13:48:57.828"/>
+</kw>
+<msg timestamp="20220531 13:48:57.828" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: WebDriverException: Message: chrome not reachable
+  (Session info: chrome=101.0.4951.67)
+</msg>
+<msg timestamp="20220531 13:48:57.831" level="FAIL">WebDriverException: Message: chrome not reachable
+  (Session info: chrome=101.0.4951.67)
+</msg>
+<status status="FAIL" starttime="20220531 13:48:33.399" endtime="20220531 13:48:57.831"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${obj_rsearch}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:57.831" endtime="20220531 13:48:57.831"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${obj_rsearch}</arg>
+<arg>${RecipientTIN}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:57.831" endtime="20220531 13:48:57.831"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${obj_rselect}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:57.831" endtime="20220531 13:48:57.831"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${obj_rselect}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:57.831" endtime="20220531 13:48:57.832"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${obj_line1}</arg>
+<arg>${Rents}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:57.832" endtime="20220531 13:48:57.832"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${obj_save}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:57.832" endtime="20220531 13:48:57.832"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:57.832" endtime="20220531 13:48:57.832"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${passed}</var>
+<arg>Wait Until Element Is Enabled</arg>
+<arg>${obj_address}</arg>
+<arg>10s</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:57.832" endtime="20220531 13:48:57.832"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${passed}</arg>
+<arg>Click Element</arg>
+<arg>${obj_address}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:57.832" endtime="20220531 13:48:57.832"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${passed}</var>
+<arg>Wait Until Element Is Enabled</arg>
+<arg>${obj_continue}</arg>
+<arg>10s</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:57.832" endtime="20220531 13:48:57.832"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${passed}</arg>
+<arg>Click Element</arg>
+<arg>${obj_continue}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20220531 13:48:57.833" endtime="20220531 13:48:57.833"/>
+</kw>
+<status status="FAIL" starttime="20220531 13:48:24.278" endtime="20220531 13:48:57.833"/>
+</kw>
+<status status="FAIL" starttime="20220531 13:48:24.277" endtime="20220531 13:48:57.834">WebDriverException: Message: chrome not reachable
+  (Session info: chrome=101.0.4951.67)
+</status>
+</test>
+<test id="s1-t5" name="TBS-MISC_TS-003">
+<kw name="TBS-MISC_TS-003" library="TBS-MISC_TS-003">
+<var>${passed}</var>
+<kw name="Get Environment Variable" library="OperatingSystem">
+<var>${logid}</var>
+<arg>logid</arg>
+<doc>Returns the value of an environment variable with the given name.</doc>
+<msg timestamp="20220531 13:48:57.836" level="INFO">${logid} = Log_20220531134745</msg>
+<status status="PASS" starttime="20220531 13:48:57.836" endtime="20220531 13:48:57.836"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>runid is ${logid}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220531 13:48:57.836" endtime="20220531 13:48:57.836"/>
+</kw>
+<kw name="Parse Xml" library="XML">
+<var>${xml}</var>
+<arg>../Object repository/1099Misc.xml</arg>
+<doc>Parses the given XML file or string into an element structure.</doc>
+<msg timestamp="20220531 13:48:57.837" level="INFO">${xml} = &lt;Element 'OR' at 0x0000027D32456590&gt;</msg>
+<status status="PASS" starttime="20220531 13:48:57.836" endtime="20220531 13:48:57.837"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_business}</var>
+<arg>${xml}</arg>
+<arg>business</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:57.838" level="INFO">${obj_business} = //span[@class='v-btn__content' and contains(text(), 'Select / Add Business')]</msg>
+<status status="PASS" starttime="20220531 13:48:57.838" endtime="20220531 13:48:57.838"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_bsearch}</var>
+<arg>${xml}</arg>
+<arg>bsearch</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:57.838" level="INFO">${obj_bsearch} = //input[@type='text' and @placeholder='Search by Payer/Employer Name, Ref.No and EIN/SSN']</msg>
+<status status="PASS" starttime="20220531 13:48:57.838" endtime="20220531 13:48:57.838"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_bselect}</var>
+<arg>${xml}</arg>
+<arg>bselect</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:57.839" level="INFO">${obj_bselect} = //button[@class='text-capitalize primary-outlined-btn v-btn v-btn--outlined theme--light v-size--default secondary--text' and @type='button']</msg>
+<status status="PASS" starttime="20220531 13:48:57.838" endtime="20220531 13:48:57.839"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_recipient}</var>
+<arg>${xml}</arg>
+<arg>recipient</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:57.839" level="INFO">${obj_recipient} = //span[@class='recipent-name mr-auto' and contains(text(), 'Search by Recipient Name/TIN')]</msg>
+<status status="PASS" starttime="20220531 13:48:57.839" endtime="20220531 13:48:57.839"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_rsearch}</var>
+<arg>${xml}</arg>
+<arg>rsearch</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:57.839" level="INFO">${obj_rsearch} = //input[@type='text' and @placeholder='Search by Employee/Recipient Name or TIN']</msg>
+<status status="PASS" starttime="20220531 13:48:57.839" endtime="20220531 13:48:57.839"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_rselect}</var>
+<arg>${xml}</arg>
+<arg>rselect</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:57.840" level="INFO">${obj_rselect} = //div[@class='pa-2 border-bottom v-list-item v-list-item--link theme--light']</msg>
+<status status="PASS" starttime="20220531 13:48:57.840" endtime="20220531 13:48:57.840"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line1}</var>
+<arg>${xml}</arg>
+<arg>line1</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:57.840" level="INFO">${obj_line1} = //em[contains(text(),"Rents")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:48:57.840" endtime="20220531 13:48:57.840"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line2}</var>
+<arg>${xml}</arg>
+<arg>line2</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:57.841" level="INFO">${obj_line2} = //em[contains(text(),"Royalties")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:48:57.840" endtime="20220531 13:48:57.841"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line3}</var>
+<arg>${xml}</arg>
+<arg>line3</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:57.841" level="INFO">${obj_line3} = //em[contains(text(),"Other income")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:48:57.841" endtime="20220531 13:48:57.841"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line4}</var>
+<arg>${xml}</arg>
+<arg>line4</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:57.841" level="INFO">${obj_line4} = //em[contains(text(),"Federal ")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:48:57.841" endtime="20220531 13:48:57.841"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line5}</var>
+<arg>${xml}</arg>
+<arg>line5</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:57.842" level="INFO">${obj_line5} = //em[contains(text(),"Fishing")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:48:57.841" endtime="20220531 13:48:57.842"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line6}</var>
+<arg>${xml}</arg>
+<arg>line6</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:57.842" level="INFO">${obj_line6} = //em[contains(text(),"Medical")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:48:57.842" endtime="20220531 13:48:57.842"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line7}</var>
+<arg>${xml}</arg>
+<arg>line7</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:57.843" level="INFO">${obj_line7} = //em[contains(text(),"Payer made direct sales totaling $5,000 or more of ")]/../following-sibling::div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:48:57.842" endtime="20220531 13:48:57.843"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line8}</var>
+<arg>${xml}</arg>
+<arg>line8</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:57.843" level="INFO">${obj_line8} = //em[contains(text(),"Substitute")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:48:57.843" endtime="20220531 13:48:57.843"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line9}</var>
+<arg>${xml}</arg>
+<arg>line9</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:57.844" level="INFO">${obj_line9} = //em[contains(text(),"Crop")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:48:57.843" endtime="20220531 13:48:57.844"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line10}</var>
+<arg>${xml}</arg>
+<arg>line10</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:57.844" level="INFO">${obj_line10} = //em[contains(text(),"Gross")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:48:57.844" endtime="20220531 13:48:57.845"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line11}</var>
+<arg>${xml}</arg>
+<arg>line11</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:57.845" level="INFO">${obj_line11} = //em[contains(text(),"Fish purchased")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:48:57.845" endtime="20220531 13:48:57.845"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line12}</var>
+<arg>${xml}</arg>
+<arg>line12</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:57.846" level="INFO">${obj_line12} = //em[contains(text(),"Section")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:48:57.845" endtime="20220531 13:48:57.846"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line13}</var>
+<arg>${xml}</arg>
+<arg>line13</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:57.846" level="INFO">${obj_line13} = //em[contains(text(),"Excess")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:48:57.846" endtime="20220531 13:48:57.846"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line14}</var>
+<arg>${xml}</arg>
+<arg>line14</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:57.847" level="INFO">${obj_line14} = //em[contains(text(),"Nonqualified")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:48:57.847" endtime="20220531 13:48:57.847"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_save}</var>
+<arg>${xml}</arg>
+<arg>save</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:57.848" level="INFO">${obj_save} = //span[@class="v-btn__content" and contains(text(),"Save &amp; Add Another")]</msg>
+<status status="PASS" starttime="20220531 13:48:57.847" endtime="20220531 13:48:57.848"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_savecon}</var>
+<arg>${xml}</arg>
+<arg>savecon</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:57.848" level="INFO">${obj_savecon} = //span[@class="v-btn__content" and contains(text(),"Save &amp; Continue")]</msg>
+<status status="PASS" starttime="20220531 13:48:57.848" endtime="20220531 13:48:57.848"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_continue}</var>
+<arg>${xml}</arg>
+<arg>continue</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:57.848" level="INFO">${obj_continue} = //button[@class='text-capitalize border-0 xl v-btn v-btn--has-bg theme--light elevation-1 v-size--x-large primary']</msg>
+<status status="PASS" starttime="20220531 13:48:57.848" endtime="20220531 13:48:57.848"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_add}</var>
+<arg>${xml}</arg>
+<arg>add</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:57.849" level="INFO">${obj_add} = //span[@class="v-btn__content" and contains(text(),"Add New Form")]</msg>
+<status status="PASS" starttime="20220531 13:48:57.849" endtime="20220531 13:48:57.849"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_misc}</var>
+<arg>${xml}</arg>
+<arg>misc</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:57.849" level="INFO">${obj_misc} = //p[contains (text(), 'Manually add Form 1099-MISC details for each recipient.')]/../../following-sibling::div/button</msg>
+<status status="PASS" starttime="20220531 13:48:57.849" endtime="20220531 13:48:57.849"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_address}</var>
+<arg>${xml}</arg>
+<arg>address</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:48:57.849" level="INFO">${obj_address} = //label[@class="v-label theme--light" and contains(text(),"Address you entered")]</msg>
+<status status="PASS" starttime="20220531 13:48:57.849" endtime="20220531 13:48:57.850"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220531 13:48:59.864" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20220531 13:48:57.850" endtime="20220531 13:48:59.865"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${wbook}</var>
+<arg>../Test Data/1099Series.xlsx</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220531 13:48:59.868" level="INFO">${wbook} = ../Test Data/1099Series.xlsx</msg>
+<status status="PASS" starttime="20220531 13:48:59.867" endtime="20220531 13:48:59.868"/>
+</kw>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${wbook}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<msg timestamp="20220531 13:48:59.870" level="INFO">Closing workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x0000027D31E9B6A0&gt;</msg>
+<msg timestamp="20220531 13:48:59.993" level="INFO">Opened workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x0000027D31E9B6A0&gt;</msg>
+<status status="PASS" starttime="20220531 13:48:59.869" endtime="20220531 13:48:59.993"/>
+</kw>
+<kw name="Read Worksheet" library="RPA.Excel.Files">
+<var>${sheet}</var>
+<arg>1099Misc</arg>
+<doc>Read the content of a worksheet into a list of dictionaries.</doc>
+<msg timestamp="20220531 13:48:59.995" level="INFO">${sheet} = [{'A': None, 'B': None, 'C': 'TIN*', 'D': '1) Rents', 'E': '2) Royalties', 'F': '3) Other income', 'G': '4) Federal income tax withheld', 'H': '5) Fishing boat proceeds', 'I': '6) Medical and health c...</msg>
+<status status="PASS" starttime="20220531 13:48:59.993" endtime="20220531 13:48:59.995"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${rows}</var>
+<arg>${sheet}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20220531 13:48:59.995" level="INFO">Length is 26</msg>
+<msg timestamp="20220531 13:48:59.995" level="INFO">${rows} = 26</msg>
+<status status="PASS" starttime="20220531 13:48:59.995" endtime="20220531 13:48:59.995"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${RecipientTIN}</var>
+<arg>4</arg>
+<arg>C</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:48:59.996" level="INFO">${RecipientTIN} = 245685965</msg>
+<status status="PASS" starttime="20220531 13:48:59.995" endtime="20220531 13:48:59.996"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Rents}</var>
+<arg>4</arg>
+<arg>D</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:48:59.996" level="INFO">${Rents} = 502</msg>
+<status status="PASS" starttime="20220531 13:48:59.996" endtime="20220531 13:48:59.996"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Royalties}</var>
+<arg>4</arg>
+<arg>E</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:48:59.996" level="INFO">${Royalties} = 352</msg>
+<status status="PASS" starttime="20220531 13:48:59.996" endtime="20220531 13:48:59.996"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Other}</var>
+<arg>4</arg>
+<arg>F</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:48:59.997" level="INFO">${Other} = 5598.75</msg>
+<status status="PASS" starttime="20220531 13:48:59.997" endtime="20220531 13:48:59.997"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Federal}</var>
+<arg>4</arg>
+<arg>G</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:48:59.997" level="INFO">${Federal} = 2369.04</msg>
+<status status="PASS" starttime="20220531 13:48:59.997" endtime="20220531 13:48:59.997"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Fishing}</var>
+<arg>4</arg>
+<arg>H</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:48:59.998" level="INFO">${Fishing} = 1250</msg>
+<status status="PASS" starttime="20220531 13:48:59.997" endtime="20220531 13:48:59.998"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Medical}</var>
+<arg>4</arg>
+<arg>I</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:48:59.998" level="INFO">${Medical} = 2500</msg>
+<status status="PASS" starttime="20220531 13:48:59.998" endtime="20220531 13:48:59.998"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Substitute}</var>
+<arg>4</arg>
+<arg>K</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:48:59.998" level="INFO">${Substitute} = 250.33</msg>
+<status status="PASS" starttime="20220531 13:48:59.998" endtime="20220531 13:48:59.998"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Crop}</var>
+<arg>4</arg>
+<arg>L</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:48:59.999" level="INFO">${Crop} = 250</msg>
+<status status="PASS" starttime="20220531 13:48:59.999" endtime="20220531 13:48:59.999"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Gross}</var>
+<arg>4</arg>
+<arg>M</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:48:59.999" level="INFO">${Gross} = 230</msg>
+<status status="PASS" starttime="20220531 13:48:59.999" endtime="20220531 13:48:59.999"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Fish}</var>
+<arg>4</arg>
+<arg>N</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:49:00.000" level="INFO">${Fish} = 154</msg>
+<status status="PASS" starttime="20220531 13:48:59.999" endtime="20220531 13:49:00.000"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Section}</var>
+<arg>4</arg>
+<arg>O</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:49:00.000" level="INFO">${Section} = 222</msg>
+<status status="PASS" starttime="20220531 13:49:00.000" endtime="20220531 13:49:00.000"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Excess}</var>
+<arg>4</arg>
+<arg>P</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:49:00.001" level="INFO">${Excess} = 255</msg>
+<status status="PASS" starttime="20220531 13:49:00.000" endtime="20220531 13:49:00.001"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Nonqualified}</var>
+<arg>4</arg>
+<arg>Q</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:49:00.001" level="INFO">${Nonqualified} = 124</msg>
+<status status="PASS" starttime="20220531 13:49:00.001" endtime="20220531 13:49:00.001"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>7s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220531 13:49:07.013" level="INFO">Slept 7 seconds</msg>
+<status status="PASS" starttime="20220531 13:49:00.001" endtime="20220531 13:49:07.014"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${obj_recipient}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220531 13:49:07.017" level="INFO">Clicking element '//span[@class='recipent-name mr-auto' and contains(text(), 'Search by Recipient Name/TIN')]'.</msg>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220531 13:49:31.362" level="FAIL">WebDriverException: Message: chrome not reachable
+  (Session info: chrome=101.0.4951.67)
+</msg>
+<status status="FAIL" starttime="20220531 13:49:19.198" endtime="20220531 13:49:31.362"/>
+</kw>
+<msg timestamp="20220531 13:49:31.362" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: WebDriverException: Message: chrome not reachable
+  (Session info: chrome=101.0.4951.67)
+</msg>
+<msg timestamp="20220531 13:49:31.367" level="FAIL">WebDriverException: Message: chrome not reachable
+  (Session info: chrome=101.0.4951.67)
+</msg>
+<status status="FAIL" starttime="20220531 13:49:07.015" endtime="20220531 13:49:31.367"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${obj_rsearch}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="NOT RUN" starttime="20220531 13:49:31.367" endtime="20220531 13:49:31.367"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${obj_rsearch}</arg>
+<arg>${RecipientTIN}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:49:31.368" endtime="20220531 13:49:31.368"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${obj_rselect}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="NOT RUN" starttime="20220531 13:49:31.368" endtime="20220531 13:49:31.368"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${obj_rselect}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:49:31.368" endtime="20220531 13:49:31.368"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${obj_line1}</arg>
+<arg>${Rents}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:49:31.368" endtime="20220531 13:49:31.368"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${obj_line2}</arg>
+<arg>${Royalties}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:49:31.368" endtime="20220531 13:49:31.368"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${obj_line3}</arg>
+<arg>${Other}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:49:31.369" endtime="20220531 13:49:31.369"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${obj_line4}</arg>
+<arg>${Federal}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:49:31.369" endtime="20220531 13:49:31.369"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${obj_line5}</arg>
+<arg>${Fishing}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:49:31.369" endtime="20220531 13:49:31.369"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${obj_line6}</arg>
+<arg>${Medical}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:49:31.369" endtime="20220531 13:49:31.369"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${obj_line8}</arg>
+<arg>${Substitute}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:49:31.369" endtime="20220531 13:49:31.369"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${obj_line9}</arg>
+<arg>${Crop}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:49:31.370" endtime="20220531 13:49:31.370"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${obj_line10}</arg>
+<arg>${Gross}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:49:31.370" endtime="20220531 13:49:31.370"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${obj_line11}</arg>
+<arg>${Fish}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:49:31.370" endtime="20220531 13:49:31.370"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${obj_line12}</arg>
+<arg>${Section}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:49:31.370" endtime="20220531 13:49:31.370"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${obj_line13}</arg>
+<arg>${Excess}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:49:31.370" endtime="20220531 13:49:31.371"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${obj_line14}</arg>
+<arg>${Nonqualified}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:49:31.371" endtime="20220531 13:49:31.371"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${obj_save}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:49:31.371" endtime="20220531 13:49:31.371"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20220531 13:49:31.371" endtime="20220531 13:49:31.371"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${passed}</var>
+<arg>Wait Until Element Is Enabled</arg>
+<arg>${obj_address}</arg>
+<arg>10s</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" starttime="20220531 13:49:31.371" endtime="20220531 13:49:31.371"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${passed}</arg>
+<arg>Click Element</arg>
+<arg>${obj_address}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20220531 13:49:31.371" endtime="20220531 13:49:31.371"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${passed}</var>
+<arg>Wait Until Element Is Enabled</arg>
+<arg>${obj_continue}</arg>
+<arg>10s</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" starttime="20220531 13:49:31.372" endtime="20220531 13:49:31.372"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${passed}</arg>
+<arg>Click Element</arg>
+<arg>${obj_continue}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20220531 13:49:31.372" endtime="20220531 13:49:31.372"/>
+</kw>
+<status status="FAIL" starttime="20220531 13:48:57.835" endtime="20220531 13:49:31.372"/>
+</kw>
+<status status="FAIL" starttime="20220531 13:48:57.834" endtime="20220531 13:49:31.373">WebDriverException: Message: chrome not reachable
+  (Session info: chrome=101.0.4951.67)
+</status>
+</test>
+<test id="s1-t6" name="TBS-MISC_TS-004">
+<kw name="TBS-MISC_TS-004" library="TBS-MISC_TS-004">
+<var>${passed}</var>
+<kw name="Get Environment Variable" library="OperatingSystem">
+<var>${logid}</var>
+<arg>logid</arg>
+<doc>Returns the value of an environment variable with the given name.</doc>
+<msg timestamp="20220531 13:49:31.376" level="INFO">${logid} = Log_20220531134745</msg>
+<status status="PASS" starttime="20220531 13:49:31.376" endtime="20220531 13:49:31.376"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>runid is ${logid}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220531 13:49:31.376" endtime="20220531 13:49:31.377"/>
+</kw>
+<kw name="Parse Xml" library="XML">
+<var>${xml}</var>
+<arg>../Object repository/1099Misc.xml</arg>
+<doc>Parses the given XML file or string into an element structure.</doc>
+<msg timestamp="20220531 13:49:31.377" level="INFO">${xml} = &lt;Element 'OR' at 0x0000027D3253F540&gt;</msg>
+<status status="PASS" starttime="20220531 13:49:31.377" endtime="20220531 13:49:31.377"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_business}</var>
+<arg>${xml}</arg>
+<arg>business</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:49:31.378" level="INFO">${obj_business} = //span[@class='v-btn__content' and contains(text(), 'Select / Add Business')]</msg>
+<status status="PASS" starttime="20220531 13:49:31.378" endtime="20220531 13:49:31.378"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_bsearch}</var>
+<arg>${xml}</arg>
+<arg>bsearch</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:49:31.378" level="INFO">${obj_bsearch} = //input[@type='text' and @placeholder='Search by Payer/Employer Name, Ref.No and EIN/SSN']</msg>
+<status status="PASS" starttime="20220531 13:49:31.378" endtime="20220531 13:49:31.378"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_bselect}</var>
+<arg>${xml}</arg>
+<arg>bselect</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:49:31.379" level="INFO">${obj_bselect} = //button[@class='text-capitalize primary-outlined-btn v-btn v-btn--outlined theme--light v-size--default secondary--text' and @type='button']</msg>
+<status status="PASS" starttime="20220531 13:49:31.378" endtime="20220531 13:49:31.379"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_recipient}</var>
+<arg>${xml}</arg>
+<arg>recipient</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:49:31.379" level="INFO">${obj_recipient} = //span[@class='recipent-name mr-auto' and contains(text(), 'Search by Recipient Name/TIN')]</msg>
+<status status="PASS" starttime="20220531 13:49:31.379" endtime="20220531 13:49:31.379"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_rsearch}</var>
+<arg>${xml}</arg>
+<arg>rsearch</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:49:31.379" level="INFO">${obj_rsearch} = //input[@type='text' and @placeholder='Search by Employee/Recipient Name or TIN']</msg>
+<status status="PASS" starttime="20220531 13:49:31.379" endtime="20220531 13:49:31.379"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_rselect}</var>
+<arg>${xml}</arg>
+<arg>rselect</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:49:31.380" level="INFO">${obj_rselect} = //div[@class='pa-2 border-bottom v-list-item v-list-item--link theme--light']</msg>
+<status status="PASS" starttime="20220531 13:49:31.380" endtime="20220531 13:49:31.380"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line1}</var>
+<arg>${xml}</arg>
+<arg>line1</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:49:31.380" level="INFO">${obj_line1} = //em[contains(text(),"Rents")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:49:31.380" endtime="20220531 13:49:31.380"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line2}</var>
+<arg>${xml}</arg>
+<arg>line2</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:49:31.381" level="INFO">${obj_line2} = //em[contains(text(),"Royalties")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:49:31.380" endtime="20220531 13:49:31.381"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line3}</var>
+<arg>${xml}</arg>
+<arg>line3</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:49:31.382" level="INFO">${obj_line3} = //em[contains(text(),"Other income")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:49:31.381" endtime="20220531 13:49:31.382"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line4}</var>
+<arg>${xml}</arg>
+<arg>line4</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:49:31.382" level="INFO">${obj_line4} = //em[contains(text(),"Federal ")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:49:31.382" endtime="20220531 13:49:31.382"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line5}</var>
+<arg>${xml}</arg>
+<arg>line5</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:49:31.383" level="INFO">${obj_line5} = //em[contains(text(),"Fishing")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:49:31.382" endtime="20220531 13:49:31.383"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line6}</var>
+<arg>${xml}</arg>
+<arg>line6</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:49:31.383" level="INFO">${obj_line6} = //em[contains(text(),"Medical")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:49:31.383" endtime="20220531 13:49:31.383"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line7}</var>
+<arg>${xml}</arg>
+<arg>line7</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:49:31.383" level="INFO">${obj_line7} = //em[contains(text(),"Payer made direct sales totaling $5,000 or more of ")]/../following-sibling::div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:49:31.383" endtime="20220531 13:49:31.383"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line8}</var>
+<arg>${xml}</arg>
+<arg>line8</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:49:31.384" level="INFO">${obj_line8} = //em[contains(text(),"Substitute")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:49:31.383" endtime="20220531 13:49:31.384"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line9}</var>
+<arg>${xml}</arg>
+<arg>line9</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:49:31.384" level="INFO">${obj_line9} = //em[contains(text(),"Crop")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:49:31.384" endtime="20220531 13:49:31.384"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line10}</var>
+<arg>${xml}</arg>
+<arg>line10</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:49:31.384" level="INFO">${obj_line10} = //em[contains(text(),"Gross")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:49:31.384" endtime="20220531 13:49:31.384"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line11}</var>
+<arg>${xml}</arg>
+<arg>line11</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:49:31.385" level="INFO">${obj_line11} = //em[contains(text(),"Fish purchased")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:49:31.385" endtime="20220531 13:49:31.385"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line12}</var>
+<arg>${xml}</arg>
+<arg>line12</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:49:31.385" level="INFO">${obj_line12} = //em[contains(text(),"Section")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:49:31.385" endtime="20220531 13:49:31.385"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line13}</var>
+<arg>${xml}</arg>
+<arg>line13</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:49:31.386" level="INFO">${obj_line13} = //em[contains(text(),"Excess")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:49:31.385" endtime="20220531 13:49:31.386"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line14}</var>
+<arg>${xml}</arg>
+<arg>line14</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:49:31.386" level="INFO">${obj_line14} = //em[contains(text(),"Nonqualified")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:49:31.386" endtime="20220531 13:49:31.386"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_save}</var>
+<arg>${xml}</arg>
+<arg>save</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:49:31.386" level="INFO">${obj_save} = //span[@class="v-btn__content" and contains(text(),"Save &amp; Add Another")]</msg>
+<status status="PASS" starttime="20220531 13:49:31.386" endtime="20220531 13:49:31.386"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_savecon}</var>
+<arg>${xml}</arg>
+<arg>savecon</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:49:31.387" level="INFO">${obj_savecon} = //span[@class="v-btn__content" and contains(text(),"Save &amp; Continue")]</msg>
+<status status="PASS" starttime="20220531 13:49:31.387" endtime="20220531 13:49:31.387"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_continue}</var>
+<arg>${xml}</arg>
+<arg>continue</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:49:31.388" level="INFO">${obj_continue} = //button[@class='text-capitalize border-0 xl v-btn v-btn--has-bg theme--light elevation-1 v-size--x-large primary']</msg>
+<status status="PASS" starttime="20220531 13:49:31.387" endtime="20220531 13:49:31.388"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_address}</var>
+<arg>${xml}</arg>
+<arg>address</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:49:31.388" level="INFO">${obj_address} = //label[@class="v-label theme--light" and contains(text(),"Address you entered")]</msg>
+<status status="PASS" starttime="20220531 13:49:31.388" endtime="20220531 13:49:31.388"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_ronline}</var>
+<arg>${xml}</arg>
+<arg>ronline</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:49:31.388" level="INFO">${obj_ronline} = //label[contains (text(), 'Select if you want to allow this employee to access Form 1099-MISC Online.')]</msg>
+<status status="PASS" starttime="20220531 13:49:31.388" endtime="20220531 13:49:31.388"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_remail}</var>
+<arg>${xml}</arg>
+<arg>remail</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:49:31.389" level="INFO">${obj_remail} = (//label[contains(text(),"Email Address")]/following-sibling::input)[2]</msg>
+<status status="PASS" starttime="20220531 13:49:31.389" endtime="20220531 13:49:31.389"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220531 13:49:33.402" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20220531 13:49:31.389" endtime="20220531 13:49:33.402"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${wbook}</var>
+<arg>../Test Data/1099Series.xlsx</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220531 13:49:33.403" level="INFO">${wbook} = ../Test Data/1099Series.xlsx</msg>
+<status status="PASS" starttime="20220531 13:49:33.403" endtime="20220531 13:49:33.404"/>
+</kw>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${wbook}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<msg timestamp="20220531 13:49:33.405" level="INFO">Closing workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x0000027D31E9B6A0&gt;</msg>
+<msg timestamp="20220531 13:49:33.505" level="INFO">Opened workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x0000027D31E9B6A0&gt;</msg>
+<status status="PASS" starttime="20220531 13:49:33.404" endtime="20220531 13:49:33.505"/>
+</kw>
+<kw name="Read Worksheet" library="RPA.Excel.Files">
+<var>${sheet}</var>
+<arg>1099Misc</arg>
+<doc>Read the content of a worksheet into a list of dictionaries.</doc>
+<msg timestamp="20220531 13:49:33.507" level="INFO">${sheet} = [{'A': None, 'B': None, 'C': 'TIN*', 'D': '1) Rents', 'E': '2) Royalties', 'F': '3) Other income', 'G': '4) Federal income tax withheld', 'H': '5) Fishing boat proceeds', 'I': '6) Medical and health c...</msg>
+<status status="PASS" starttime="20220531 13:49:33.505" endtime="20220531 13:49:33.507"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${rows}</var>
+<arg>${sheet}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20220531 13:49:33.508" level="INFO">Length is 26</msg>
+<msg timestamp="20220531 13:49:33.508" level="INFO">${rows} = 26</msg>
+<status status="PASS" starttime="20220531 13:49:33.508" endtime="20220531 13:49:33.508"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${RecipientTIN}</var>
+<arg>5</arg>
+<arg>C</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:49:33.508" level="INFO">${RecipientTIN} = 245685966</msg>
+<status status="PASS" starttime="20220531 13:49:33.508" endtime="20220531 13:49:33.508"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Rents}</var>
+<arg>5</arg>
+<arg>D</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:49:33.509" level="INFO">${Rents} = 503</msg>
+<status status="PASS" starttime="20220531 13:49:33.509" endtime="20220531 13:49:33.509"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Royalties}</var>
+<arg>5</arg>
+<arg>E</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:49:33.509" level="INFO">${Royalties} = 353</msg>
+<status status="PASS" starttime="20220531 13:49:33.509" endtime="20220531 13:49:33.509"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Other}</var>
+<arg>5</arg>
+<arg>F</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:49:33.510" level="INFO">${Other} = 5597.5</msg>
+<status status="PASS" starttime="20220531 13:49:33.509" endtime="20220531 13:49:33.510"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Federal}</var>
+<arg>5</arg>
+<arg>G</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:49:33.510" level="INFO">${Federal} = 2373.08</msg>
+<status status="PASS" starttime="20220531 13:49:33.510" endtime="20220531 13:49:33.510"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Fishing}</var>
+<arg>5</arg>
+<arg>H</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:49:33.510" level="INFO">${Fishing} = 1250</msg>
+<status status="PASS" starttime="20220531 13:49:33.510" endtime="20220531 13:49:33.510"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Medical}</var>
+<arg>5</arg>
+<arg>I</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:49:33.511" level="INFO">${Medical} = 2500</msg>
+<status status="PASS" starttime="20220531 13:49:33.511" endtime="20220531 13:49:33.511"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Substitute}</var>
+<arg>5</arg>
+<arg>K</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:49:33.511" level="INFO">${Substitute} = 250.33</msg>
+<status status="PASS" starttime="20220531 13:49:33.511" endtime="20220531 13:49:33.511"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Crop}</var>
+<arg>5</arg>
+<arg>L</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:49:33.512" level="INFO">${Crop} = 250</msg>
+<status status="PASS" starttime="20220531 13:49:33.511" endtime="20220531 13:49:33.512"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Gross}</var>
+<arg>5</arg>
+<arg>M</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:49:33.512" level="INFO">${Gross} = 230</msg>
+<status status="PASS" starttime="20220531 13:49:33.512" endtime="20220531 13:49:33.512"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Fish}</var>
+<arg>5</arg>
+<arg>N</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:49:33.512" level="INFO">${Fish} = 154</msg>
+<status status="PASS" starttime="20220531 13:49:33.512" endtime="20220531 13:49:33.512"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Section}</var>
+<arg>5</arg>
+<arg>O</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:49:33.513" level="INFO">${Section} = 222</msg>
+<status status="PASS" starttime="20220531 13:49:33.513" endtime="20220531 13:49:33.513"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Excess}</var>
+<arg>5</arg>
+<arg>P</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:49:33.513" level="INFO">${Excess} = 255</msg>
+<status status="PASS" starttime="20220531 13:49:33.513" endtime="20220531 13:49:33.513"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Nonqualified}</var>
+<arg>5</arg>
+<arg>Q</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:49:33.514" level="INFO">${Nonqualified} = 124</msg>
+<status status="PASS" starttime="20220531 13:49:33.514" endtime="20220531 13:49:33.514"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>7s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220531 13:49:40.530" level="INFO">Slept 7 seconds</msg>
+<status status="PASS" starttime="20220531 13:49:33.514" endtime="20220531 13:49:40.530"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${obj_recipient}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220531 13:49:40.531" level="INFO">Clicking element '//span[@class='recipent-name mr-auto' and contains(text(), 'Search by Recipient Name/TIN')]'.</msg>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220531 13:50:04.915" level="FAIL">WebDriverException: Message: chrome not reachable
+  (Session info: chrome=101.0.4951.67)
+</msg>
+<status status="FAIL" starttime="20220531 13:49:52.716" endtime="20220531 13:50:04.916"/>
+</kw>
+<msg timestamp="20220531 13:50:04.916" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: WebDriverException: Message: chrome not reachable
+  (Session info: chrome=101.0.4951.67)
+</msg>
+<msg timestamp="20220531 13:50:04.921" level="FAIL">WebDriverException: Message: chrome not reachable
+  (Session info: chrome=101.0.4951.67)
+</msg>
+<status status="FAIL" starttime="20220531 13:49:40.530" endtime="20220531 13:50:04.921"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${obj_rsearch}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="NOT RUN" starttime="20220531 13:50:04.922" endtime="20220531 13:50:04.922"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${obj_rsearch}</arg>
+<arg>${RecipientTIN}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:50:04.922" endtime="20220531 13:50:04.922"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${obj_rselect}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="NOT RUN" starttime="20220531 13:50:04.922" endtime="20220531 13:50:04.922"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${obj_rselect}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:50:04.922" endtime="20220531 13:50:04.922"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20220531 13:50:04.923" endtime="20220531 13:50:04.923"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${obj_ronline}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:50:04.923" endtime="20220531 13:50:04.923"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${obj_line1}</arg>
+<arg>${Rents}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:50:04.923" endtime="20220531 13:50:04.923"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>${obj_remail}</arg>
+<arg>CTRL+a+BACKSPACE</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="NOT RUN" starttime="20220531 13:50:04.923" endtime="20220531 13:50:04.923"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${obj_remail}</arg>
+<arg>udhaya.g+k1@dotnetethics.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:50:04.923" endtime="20220531 13:50:04.923"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>C:\\Users\\STS360-UDHAYA S\\Desktop\\Jenkins workspace\\RobotFramework\\support\\1099MISC/Screenshot/TBS-MISC_TS-004.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" starttime="20220531 13:50:04.924" endtime="20220531 13:50:04.924"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${obj_save}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:50:04.924" endtime="20220531 13:50:04.924"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20220531 13:50:04.924" endtime="20220531 13:50:04.924"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${passed}</var>
+<arg>Wait Until Element Is Enabled</arg>
+<arg>${obj_address}</arg>
+<arg>10s</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" starttime="20220531 13:50:04.924" endtime="20220531 13:50:04.924"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${passed}</arg>
+<arg>Click Element</arg>
+<arg>${obj_address}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20220531 13:50:04.924" endtime="20220531 13:50:04.924"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${passed}</var>
+<arg>Wait Until Element Is Enabled</arg>
+<arg>${obj_continue}</arg>
+<arg>10s</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" starttime="20220531 13:50:04.924" endtime="20220531 13:50:04.925"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${passed}</arg>
+<arg>Click Element</arg>
+<arg>${obj_continue}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20220531 13:50:04.925" endtime="20220531 13:50:04.925"/>
+</kw>
+<status status="FAIL" starttime="20220531 13:49:31.376" endtime="20220531 13:50:04.925"/>
+</kw>
+<status status="FAIL" starttime="20220531 13:49:31.375" endtime="20220531 13:50:04.926">WebDriverException: Message: chrome not reachable
+  (Session info: chrome=101.0.4951.67)
+</status>
+</test>
+<test id="s1-t7" name="TBS-MISC_TS-005">
+<kw name="TBS-MISC_TS-005" library="TBS-MISC_TS-005">
+<var>${passed}</var>
+<kw name="Get Environment Variable" library="OperatingSystem">
+<var>${logid}</var>
+<arg>logid</arg>
+<doc>Returns the value of an environment variable with the given name.</doc>
+<msg timestamp="20220531 13:50:04.930" level="INFO">${logid} = Log_20220531134745</msg>
+<status status="PASS" starttime="20220531 13:50:04.929" endtime="20220531 13:50:04.930"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>runid is ${logid}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220531 13:50:04.930" endtime="20220531 13:50:04.930"/>
+</kw>
+<kw name="Parse Xml" library="XML">
+<var>${xml}</var>
+<arg>../Object repository/1099Misc.xml</arg>
+<doc>Parses the given XML file or string into an element structure.</doc>
+<msg timestamp="20220531 13:50:04.932" level="INFO">${xml} = &lt;Element 'OR' at 0x0000027D32615810&gt;</msg>
+<status status="PASS" starttime="20220531 13:50:04.930" endtime="20220531 13:50:04.932"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_business}</var>
+<arg>${xml}</arg>
+<arg>business</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:04.933" level="INFO">${obj_business} = //span[@class='v-btn__content' and contains(text(), 'Select / Add Business')]</msg>
+<status status="PASS" starttime="20220531 13:50:04.932" endtime="20220531 13:50:04.933"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_bsearch}</var>
+<arg>${xml}</arg>
+<arg>bsearch</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:04.934" level="INFO">${obj_bsearch} = //input[@type='text' and @placeholder='Search by Payer/Employer Name, Ref.No and EIN/SSN']</msg>
+<status status="PASS" starttime="20220531 13:50:04.933" endtime="20220531 13:50:04.934"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_bselect}</var>
+<arg>${xml}</arg>
+<arg>bselect</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:04.934" level="INFO">${obj_bselect} = //button[@class='text-capitalize primary-outlined-btn v-btn v-btn--outlined theme--light v-size--default secondary--text' and @type='button']</msg>
+<status status="PASS" starttime="20220531 13:50:04.934" endtime="20220531 13:50:04.934"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_recipient}</var>
+<arg>${xml}</arg>
+<arg>recipient</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:04.935" level="INFO">${obj_recipient} = //span[@class='recipent-name mr-auto' and contains(text(), 'Search by Recipient Name/TIN')]</msg>
+<status status="PASS" starttime="20220531 13:50:04.934" endtime="20220531 13:50:04.935"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_rsearch}</var>
+<arg>${xml}</arg>
+<arg>rsearch</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:04.935" level="INFO">${obj_rsearch} = //input[@type='text' and @placeholder='Search by Employee/Recipient Name or TIN']</msg>
+<status status="PASS" starttime="20220531 13:50:04.935" endtime="20220531 13:50:04.935"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_rselect}</var>
+<arg>${xml}</arg>
+<arg>rselect</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:04.936" level="INFO">${obj_rselect} = //div[@class='pa-2 border-bottom v-list-item v-list-item--link theme--light']</msg>
+<status status="PASS" starttime="20220531 13:50:04.935" endtime="20220531 13:50:04.936"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line1}</var>
+<arg>${xml}</arg>
+<arg>line1</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:04.936" level="INFO">${obj_line1} = //em[contains(text(),"Rents")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:50:04.936" endtime="20220531 13:50:04.936"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_save}</var>
+<arg>${xml}</arg>
+<arg>save</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:04.937" level="INFO">${obj_save} = //span[@class="v-btn__content" and contains(text(),"Save &amp; Add Another")]</msg>
+<status status="PASS" starttime="20220531 13:50:04.936" endtime="20220531 13:50:04.937"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_savecon}</var>
+<arg>${xml}</arg>
+<arg>savecon</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:04.938" level="INFO">${obj_savecon} = //span[@class="v-btn__content" and contains(text(),"Save &amp; Continue")]</msg>
+<status status="PASS" starttime="20220531 13:50:04.937" endtime="20220531 13:50:04.938"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_continue}</var>
+<arg>${xml}</arg>
+<arg>continue</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:04.938" level="INFO">${obj_continue} = //button[@class='text-capitalize border-0 xl v-btn v-btn--has-bg theme--light elevation-1 v-size--x-large primary']</msg>
+<status status="PASS" starttime="20220531 13:50:04.938" endtime="20220531 13:50:04.938"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_address}</var>
+<arg>${xml}</arg>
+<arg>address</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:04.938" level="INFO">${obj_address} = //label[@class="v-label theme--light" and contains(text(),"Address you entered")]</msg>
+<status status="PASS" starttime="20220531 13:50:04.938" endtime="20220531 13:50:04.939"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${wbook}</var>
+<arg>../Test Data/1099Series.xlsx</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220531 13:50:04.939" level="INFO">${wbook} = ../Test Data/1099Series.xlsx</msg>
+<status status="PASS" starttime="20220531 13:50:04.939" endtime="20220531 13:50:04.939"/>
+</kw>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${wbook}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<msg timestamp="20220531 13:50:04.939" level="INFO">Closing workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x0000027D31E9B6A0&gt;</msg>
+<msg timestamp="20220531 13:50:05.018" level="INFO">Opened workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x0000027D31E9B6A0&gt;</msg>
+<status status="PASS" starttime="20220531 13:50:04.939" endtime="20220531 13:50:05.018"/>
+</kw>
+<kw name="Read Worksheet" library="RPA.Excel.Files">
+<var>${sheet}</var>
+<arg>1099Misc</arg>
+<doc>Read the content of a worksheet into a list of dictionaries.</doc>
+<msg timestamp="20220531 13:50:05.021" level="INFO">${sheet} = [{'A': None, 'B': None, 'C': 'TIN*', 'D': '1) Rents', 'E': '2) Royalties', 'F': '3) Other income', 'G': '4) Federal income tax withheld', 'H': '5) Fishing boat proceeds', 'I': '6) Medical and health c...</msg>
+<status status="PASS" starttime="20220531 13:50:05.019" endtime="20220531 13:50:05.021"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${rows}</var>
+<arg>${sheet}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20220531 13:50:05.021" level="INFO">Length is 26</msg>
+<msg timestamp="20220531 13:50:05.022" level="INFO">${rows} = 26</msg>
+<status status="PASS" starttime="20220531 13:50:05.021" endtime="20220531 13:50:05.022"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${RecipientTIN}</var>
+<arg>6</arg>
+<arg>C</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:50:05.022" level="INFO">${RecipientTIN} = 245685967</msg>
+<status status="PASS" starttime="20220531 13:50:05.022" endtime="20220531 13:50:05.022"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Rents}</var>
+<arg>6</arg>
+<arg>D</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:50:05.022" level="INFO">${Rents} = 504</msg>
+<status status="PASS" starttime="20220531 13:50:05.022" endtime="20220531 13:50:05.022"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>7s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220531 13:50:12.037" level="INFO">Slept 7 seconds</msg>
+<status status="PASS" starttime="20220531 13:50:05.022" endtime="20220531 13:50:12.038"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${obj_recipient}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220531 13:50:12.040" level="INFO">Clicking element '//span[@class='recipent-name mr-auto' and contains(text(), 'Search by Recipient Name/TIN')]'.</msg>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220531 13:50:36.336" level="FAIL">WebDriverException: Message: chrome not reachable
+  (Session info: chrome=101.0.4951.67)
+</msg>
+<status status="FAIL" starttime="20220531 13:50:24.190" endtime="20220531 13:50:36.336"/>
+</kw>
+<msg timestamp="20220531 13:50:36.336" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: WebDriverException: Message: chrome not reachable
+  (Session info: chrome=101.0.4951.67)
+</msg>
+<msg timestamp="20220531 13:50:36.340" level="FAIL">WebDriverException: Message: chrome not reachable
+  (Session info: chrome=101.0.4951.67)
+</msg>
+<status status="FAIL" starttime="20220531 13:50:12.039" endtime="20220531 13:50:36.340"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${obj_rsearch}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="NOT RUN" starttime="20220531 13:50:36.341" endtime="20220531 13:50:36.341"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${obj_rsearch}</arg>
+<arg>${RecipientTIN}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:50:36.341" endtime="20220531 13:50:36.341"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${obj_rselect}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="NOT RUN" starttime="20220531 13:50:36.341" endtime="20220531 13:50:36.341"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${obj_rselect}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:50:36.341" endtime="20220531 13:50:36.341"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${obj_line1}</arg>
+<arg>${Rents}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:50:36.341" endtime="20220531 13:50:36.342"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${obj_save}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:50:36.342" endtime="20220531 13:50:36.342"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20220531 13:50:36.342" endtime="20220531 13:50:36.342"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${passed}</var>
+<arg>Wait Until Element Is Enabled</arg>
+<arg>${obj_address}</arg>
+<arg>10s</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" starttime="20220531 13:50:36.342" endtime="20220531 13:50:36.342"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${passed}</arg>
+<arg>Click Element</arg>
+<arg>${obj_address}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20220531 13:50:36.342" endtime="20220531 13:50:36.342"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${passed}</var>
+<arg>Wait Until Element Is Enabled</arg>
+<arg>${obj_continue}</arg>
+<arg>10s</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" starttime="20220531 13:50:36.342" endtime="20220531 13:50:36.343"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${passed}</arg>
+<arg>Click Element</arg>
+<arg>${obj_continue}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20220531 13:50:36.343" endtime="20220531 13:50:36.343"/>
+</kw>
+<status status="FAIL" starttime="20220531 13:50:04.929" endtime="20220531 13:50:36.343"/>
+</kw>
+<status status="FAIL" starttime="20220531 13:50:04.927" endtime="20220531 13:50:36.344">WebDriverException: Message: chrome not reachable
+  (Session info: chrome=101.0.4951.67)
+</status>
+</test>
+<test id="s1-t8" name="TBS-MISC_TS-006">
+<kw name="TBS-MISC_TS-006" library="TBS-MISC_TS-006">
+<var>${passed}</var>
+<kw name="Get Environment Variable" library="OperatingSystem">
+<var>${logid}</var>
+<arg>logid</arg>
+<doc>Returns the value of an environment variable with the given name.</doc>
+<msg timestamp="20220531 13:50:36.348" level="INFO">${logid} = Log_20220531134745</msg>
+<status status="PASS" starttime="20220531 13:50:36.348" endtime="20220531 13:50:36.348"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>runid is ${logid}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220531 13:50:36.348" endtime="20220531 13:50:36.349"/>
+</kw>
+<kw name="Parse Xml" library="XML">
+<var>${xml}</var>
+<arg>../Object repository/1099Misc.xml</arg>
+<doc>Parses the given XML file or string into an element structure.</doc>
+<msg timestamp="20220531 13:50:36.350" level="INFO">${xml} = &lt;Element 'OR' at 0x0000027D3272E400&gt;</msg>
+<status status="PASS" starttime="20220531 13:50:36.349" endtime="20220531 13:50:36.350"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_recipient}</var>
+<arg>${xml}</arg>
+<arg>recipient</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:36.351" level="INFO">${obj_recipient} = //span[@class='recipent-name mr-auto' and contains(text(), 'Search by Recipient Name/TIN')]</msg>
+<status status="PASS" starttime="20220531 13:50:36.350" endtime="20220531 13:50:36.351"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_rsearch}</var>
+<arg>${xml}</arg>
+<arg>rsearch</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:36.351" level="INFO">${obj_rsearch} = //input[@type='text' and @placeholder='Search by Employee/Recipient Name or TIN']</msg>
+<status status="PASS" starttime="20220531 13:50:36.351" endtime="20220531 13:50:36.351"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_rselect}</var>
+<arg>${xml}</arg>
+<arg>rselect</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:36.352" level="INFO">${obj_rselect} = //div[@class='pa-2 border-bottom v-list-item v-list-item--link theme--light']</msg>
+<status status="PASS" starttime="20220531 13:50:36.351" endtime="20220531 13:50:36.352"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line1}</var>
+<arg>${xml}</arg>
+<arg>line1</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:36.352" level="INFO">${obj_line1} = //em[contains(text(),"Rents")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:50:36.352" endtime="20220531 13:50:36.352"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line2}</var>
+<arg>${xml}</arg>
+<arg>line2</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:36.352" level="INFO">${obj_line2} = //em[contains(text(),"Royalties")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:50:36.352" endtime="20220531 13:50:36.352"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line3}</var>
+<arg>${xml}</arg>
+<arg>line3</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:36.353" level="INFO">${obj_line3} = //em[contains(text(),"Other income")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:50:36.353" endtime="20220531 13:50:36.353"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line4}</var>
+<arg>${xml}</arg>
+<arg>line4</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:36.354" level="INFO">${obj_line4} = //em[contains(text(),"Federal ")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:50:36.354" endtime="20220531 13:50:36.354"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line5}</var>
+<arg>${xml}</arg>
+<arg>line5</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:36.354" level="INFO">${obj_line5} = //em[contains(text(),"Fishing")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:50:36.354" endtime="20220531 13:50:36.355"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line6}</var>
+<arg>${xml}</arg>
+<arg>line6</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:36.355" level="INFO">${obj_line6} = //em[contains(text(),"Medical")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:50:36.355" endtime="20220531 13:50:36.355"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line7}</var>
+<arg>${xml}</arg>
+<arg>line7</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:36.355" level="INFO">${obj_line7} = //em[contains(text(),"Payer made direct sales totaling $5,000 or more of ")]/../following-sibling::div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:50:36.355" endtime="20220531 13:50:36.355"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line8}</var>
+<arg>${xml}</arg>
+<arg>line8</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:36.356" level="INFO">${obj_line8} = //em[contains(text(),"Substitute")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:50:36.356" endtime="20220531 13:50:36.356"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line9}</var>
+<arg>${xml}</arg>
+<arg>line9</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:36.357" level="INFO">${obj_line9} = //em[contains(text(),"Crop")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:50:36.357" endtime="20220531 13:50:36.357"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line10}</var>
+<arg>${xml}</arg>
+<arg>line10</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:36.357" level="INFO">${obj_line10} = //em[contains(text(),"Gross")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:50:36.357" endtime="20220531 13:50:36.357"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line11}</var>
+<arg>${xml}</arg>
+<arg>line11</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:36.358" level="INFO">${obj_line11} = //em[contains(text(),"Fish purchased")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:50:36.357" endtime="20220531 13:50:36.358"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line12}</var>
+<arg>${xml}</arg>
+<arg>line12</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:36.358" level="INFO">${obj_line12} = //em[contains(text(),"Section")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:50:36.358" endtime="20220531 13:50:36.358"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line13}</var>
+<arg>${xml}</arg>
+<arg>line13</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:36.358" level="INFO">${obj_line13} = //em[contains(text(),"Excess")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:50:36.358" endtime="20220531 13:50:36.359"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_line14}</var>
+<arg>${xml}</arg>
+<arg>line14</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:36.359" level="INFO">${obj_line14} = //em[contains(text(),"Nonqualified")]/../..//following-sibling::section/div/div/div/div/input</msg>
+<status status="PASS" starttime="20220531 13:50:36.359" endtime="20220531 13:50:36.359"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_ErrorPopup}</var>
+<arg>${xml}</arg>
+<arg>ErrorPopup</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:36.359" level="INFO">${obj_ErrorPopup} = (//div[@class='mx-auto box-shadow-none v-card v-sheet theme--light'])</msg>
+<status status="PASS" starttime="20220531 13:50:36.359" endtime="20220531 13:50:36.359"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_FixError}</var>
+<arg>${xml}</arg>
+<arg>FixError</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:36.360" level="INFO">${obj_FixError} = //span[contains (text(), 'Fix Errors')]</msg>
+<status status="PASS" starttime="20220531 13:50:36.359" endtime="20220531 13:50:36.360"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_save}</var>
+<arg>${xml}</arg>
+<arg>save</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:36.360" level="INFO">${obj_save} = //span[@class="v-btn__content" and contains(text(),"Save &amp; Add Another")]</msg>
+<status status="PASS" starttime="20220531 13:50:36.360" endtime="20220531 13:50:36.360"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_savecon}</var>
+<arg>${xml}</arg>
+<arg>savecon</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:36.361" level="INFO">${obj_savecon} = //span[@class="v-btn__content" and contains(text(),"Save &amp; Continue")]</msg>
+<status status="PASS" starttime="20220531 13:50:36.360" endtime="20220531 13:50:36.361"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_continue}</var>
+<arg>${xml}</arg>
+<arg>continue</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:36.361" level="INFO">${obj_continue} = //button[@class='text-capitalize border-0 xl v-btn v-btn--has-bg theme--light elevation-1 v-size--x-large primary']</msg>
+<status status="PASS" starttime="20220531 13:50:36.361" endtime="20220531 13:50:36.361"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_add}</var>
+<arg>${xml}</arg>
+<arg>add</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:36.361" level="INFO">${obj_add} = //span[@class="v-btn__content" and contains(text(),"Add New Form")]</msg>
+<status status="PASS" starttime="20220531 13:50:36.361" endtime="20220531 13:50:36.361"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_misc}</var>
+<arg>${xml}</arg>
+<arg>misc</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:36.362" level="INFO">${obj_misc} = //p[contains (text(), 'Manually add Form 1099-MISC details for each recipient.')]/../../following-sibling::div/button</msg>
+<status status="PASS" starttime="20220531 13:50:36.361" endtime="20220531 13:50:36.362"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${obj_address}</var>
+<arg>${xml}</arg>
+<arg>address</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20220531 13:50:36.362" level="INFO">${obj_address} = //label[@class="v-label theme--light" and contains(text(),"Address you entered")]</msg>
+<status status="PASS" starttime="20220531 13:50:36.362" endtime="20220531 13:50:36.362"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${wbook}</var>
+<arg>../Test Data/1099Series.xlsx</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220531 13:50:36.362" level="INFO">${wbook} = ../Test Data/1099Series.xlsx</msg>
+<status status="PASS" starttime="20220531 13:50:36.362" endtime="20220531 13:50:36.362"/>
+</kw>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${wbook}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<msg timestamp="20220531 13:50:36.363" level="INFO">Closing workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x0000027D31E9B6A0&gt;</msg>
+<msg timestamp="20220531 13:50:36.442" level="INFO">Opened workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x0000027D31E9B6A0&gt;</msg>
+<status status="PASS" starttime="20220531 13:50:36.362" endtime="20220531 13:50:36.442"/>
+</kw>
+<kw name="Read Worksheet" library="RPA.Excel.Files">
+<var>${sheet}</var>
+<arg>1099Misc</arg>
+<doc>Read the content of a worksheet into a list of dictionaries.</doc>
+<msg timestamp="20220531 13:50:36.443" level="INFO">${sheet} = [{'A': None, 'B': None, 'C': 'TIN*', 'D': '1) Rents', 'E': '2) Royalties', 'F': '3) Other income', 'G': '4) Federal income tax withheld', 'H': '5) Fishing boat proceeds', 'I': '6) Medical and health c...</msg>
+<status status="PASS" starttime="20220531 13:50:36.442" endtime="20220531 13:50:36.444"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${rows}</var>
+<arg>${sheet}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20220531 13:50:36.444" level="INFO">Length is 26</msg>
+<msg timestamp="20220531 13:50:36.444" level="INFO">${rows} = 26</msg>
+<status status="PASS" starttime="20220531 13:50:36.444" endtime="20220531 13:50:36.444"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${RecipientTIN}</var>
+<arg>7</arg>
+<arg>C</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:50:36.444" level="INFO">${RecipientTIN} = 245685968</msg>
+<status status="PASS" starttime="20220531 13:50:36.444" endtime="20220531 13:50:36.444"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Rents}</var>
+<arg>7</arg>
+<arg>D</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:50:36.445" level="INFO">${Rents} = 505</msg>
+<status status="PASS" starttime="20220531 13:50:36.444" endtime="20220531 13:50:36.445"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Royalties}</var>
+<arg>7</arg>
+<arg>E</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:50:36.445" level="INFO">${Royalties} = 355</msg>
+<status status="PASS" starttime="20220531 13:50:36.445" endtime="20220531 13:50:36.445"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Other}</var>
+<arg>7</arg>
+<arg>F</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:50:36.445" level="INFO">${Other} = 5595</msg>
+<status status="PASS" starttime="20220531 13:50:36.445" endtime="20220531 13:50:36.445"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Federal}</var>
+<arg>7</arg>
+<arg>G</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:50:36.446" level="INFO">${Federal} = 23810.16</msg>
+<status status="PASS" starttime="20220531 13:50:36.445" endtime="20220531 13:50:36.446"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Fishing}</var>
+<arg>7</arg>
+<arg>H</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:50:36.446" level="INFO">${Fishing} = 1250</msg>
+<status status="PASS" starttime="20220531 13:50:36.446" endtime="20220531 13:50:36.446"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Medical}</var>
+<arg>7</arg>
+<arg>I</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:50:36.447" level="INFO">${Medical} = 2500</msg>
+<status status="PASS" starttime="20220531 13:50:36.446" endtime="20220531 13:50:36.447"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Substitute}</var>
+<arg>7</arg>
+<arg>K</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:50:36.447" level="INFO">${Substitute} = 250.33</msg>
+<status status="PASS" starttime="20220531 13:50:36.447" endtime="20220531 13:50:36.447"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Crop}</var>
+<arg>7</arg>
+<arg>L</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:50:36.447" level="INFO">${Crop} = 250</msg>
+<status status="PASS" starttime="20220531 13:50:36.447" endtime="20220531 13:50:36.447"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Gross}</var>
+<arg>7</arg>
+<arg>M</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:50:36.448" level="INFO">${Gross} = 230</msg>
+<status status="PASS" starttime="20220531 13:50:36.448" endtime="20220531 13:50:36.448"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Fish}</var>
+<arg>7</arg>
+<arg>N</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:50:36.448" level="INFO">${Fish} = 154</msg>
+<status status="PASS" starttime="20220531 13:50:36.448" endtime="20220531 13:50:36.448"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Section}</var>
+<arg>7</arg>
+<arg>O</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:50:36.449" level="INFO">${Section} = 222</msg>
+<status status="PASS" starttime="20220531 13:50:36.448" endtime="20220531 13:50:36.449"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Excess}</var>
+<arg>7</arg>
+<arg>P</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:50:36.449" level="INFO">${Excess} = 255</msg>
+<status status="PASS" starttime="20220531 13:50:36.449" endtime="20220531 13:50:36.449"/>
+</kw>
+<kw name="Get Cell Value" library="RPA.Excel.Files">
+<var>${Nonqualified}</var>
+<arg>7</arg>
+<arg>Q</arg>
+<arg>1099Misc</arg>
+<doc>Get a cell value in the given worksheet.</doc>
+<msg timestamp="20220531 13:50:36.449" level="INFO">${Nonqualified} = 124</msg>
+<status status="PASS" starttime="20220531 13:50:36.449" endtime="20220531 13:50:36.449"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>7s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220531 13:50:43.463" level="INFO">Slept 7 seconds</msg>
+<status status="PASS" starttime="20220531 13:50:36.449" endtime="20220531 13:50:43.464"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${obj_recipient}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220531 13:50:43.465" level="INFO">Clicking element '//span[@class='recipent-name mr-auto' and contains(text(), 'Search by Recipient Name/TIN')]'.</msg>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220531 13:51:07.849" level="FAIL">WebDriverException: Message: chrome not reachable
+  (Session info: chrome=101.0.4951.67)
+</msg>
+<status status="FAIL" starttime="20220531 13:50:55.665" endtime="20220531 13:51:07.849"/>
+</kw>
+<msg timestamp="20220531 13:51:07.849" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: WebDriverException: Message: chrome not reachable
+  (Session info: chrome=101.0.4951.67)
+</msg>
+<msg timestamp="20220531 13:51:07.855" level="FAIL">WebDriverException: Message: chrome not reachable
+  (Session info: chrome=101.0.4951.67)
+</msg>
+<status status="FAIL" starttime="20220531 13:50:43.464" endtime="20220531 13:51:07.855"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${obj_rsearch}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="NOT RUN" starttime="20220531 13:51:07.856" endtime="20220531 13:51:07.856"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${obj_rsearch}</arg>
+<arg>${RecipientTIN}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220531 13:51:07.856" endtime="20220531 13:51:07.856"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${obj_rselect}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="NOT RUN" starttime="20220531 13:51:07.856" endtime="20220531 13:51:07.856"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${obj_rselect}</arg>
+<doc>Click the element identified by ``locator``.</doc>
