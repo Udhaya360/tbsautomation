@@ -3,6 +3,7 @@ TBS-NEC_TS-004
 
 	${xml}=    Parse XML    ../Object Repository/1099Nec.xml
 	${wbook}=     Set Variable     ../Test Data/1099Series.xlsx
+	${logid}=     Get Environment Variable     logid
 	${obj_clear}=	Get Element Text	${xml}	clear
 	${obj_nec}=		Get Element Text    	${xml}   	nec
 	${obj_necbt}=		Get Element Text    	${xml}   	necbt
@@ -53,8 +54,11 @@ TBS-NEC_TS-004
 	press keys   	${obj_emailaddress}        CTRL+a+BACKSPACE	
 	Input Text			${obj_emailaddress}		${obj_oaccessemail}
 	Click Element       ${obj_saveadd}
-	sleep	5s
+	
 	${passed} =    Run Keyword And Return Status         Wait Until Element Is Enabled       ${obj_addressent}    10s
 	Run Keyword If    ${passed}    Click Element   ${obj_addressent}
 	${passed} =    Run Keyword And Return Status         Wait Until Element Is Enabled       ${obj_addresscont}    10s
 	Run Keyword If    ${passed}    Click Element   ${obj_addresscont} 
+	Run Keyword Unless    ${passed}       Capture Page Screenshot     ../Support/Screenshots/${logid}_TBS-NEC_TS-004.png
+	sleep	5s
+  	Run Keyword Unless    ${passed}      writelog    '${logid}','TBS-NEC_TS-004','Create Form by opting online access','NEC form should be created by opting online access','NEC form is created by opting online access','Pass','${logid}_TBS-NEC_TS-004.png'

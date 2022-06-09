@@ -3,6 +3,7 @@ TBS-NEC_TS-002
 
 	${xml}=    Parse XML    ../Object Repository/1099Nec.xml
 	${wbook}=     Set Variable     ../Test Data/1099Series.xlsx
+	${logid}=     Get Environment Variable     logid
 	${obj_clear}=	Get Element Text	${xml}	clear
 	${obj_selectpayer}=    		Get Element Text    	${xml}   	selectpayer
 	${obj_psearch}=			Get Element Text	${xml}		psearch
@@ -38,16 +39,16 @@ TBS-NEC_TS-002
 	Click Element           	${obj_rlookup}		
 	sleep 	10s		
 	Input Text			${obj_rtype}			${obj_rtype1}
-	
-	Click Element      ${obj_reciselect}                              
-						
+	Click Element      ${obj_reciselect}                              				
 	Input Text			${obj_nonemp}		${obj_nonemp1}	
-	
-	
 	Click Element       ${obj_saveadd}
-	sleep	5s
+	
 	${passed} =    Run Keyword And Return Status         Wait Until Element Is Enabled       ${obj_addressent}    10s
 	Run Keyword If    ${passed}    Click Element   ${obj_addressent}
 	${passed} =    Run Keyword And Return Status         Wait Until Element Is Enabled       ${obj_addresscont}    10s
-	Run Keyword If    ${passed}    Click Element   ${obj_addresscont} 
+	Run Keyword If    ${passed}    Click Element   ${obj_addresscont}
+	
+	Run Keyword Unless    ${passed}       Capture Page Screenshot     ../Support/Screenshots/${logid}_TBS-NEC_TS-002.png
+	sleep	5s
+  	Run Keyword Unless    ${passed}      writelog    '${logid}','TBS-NEC_TS-002','Create Form with Foreign Address','NEC form should be created with foreign address','NEC form created with foreign address','Pass','${logid}_TBS-NEC_TS-002.png' 
 	

@@ -20,7 +20,7 @@ def delht():
 def writeh(qry):
     val=qry.split(',')
     file1 = open("MyFile.txt","a")
-    file1.write('<tr><th>'+val[1]+'</th><th>'+val[3]+'</th><th>'+val[6]+'</th></tr>')
+    file1.write('<tr><th>'+val[1]+'</th><th>'+val[2]+'</th><th>'+val[5]+'</th></tr>')
     file1.close()
 
 
@@ -40,7 +40,7 @@ class associatelib:
   def writelog(self,qry):
     connect=pyodbc.connect('Driver={ODBC Driver 17 for SQL Server};server=129.213.189.132;Database=ExpressExtensionAuto_Staging;uid=StagingAutomationDB_User;pwd=Asc$nd@s#113;Trusted_Connection=no;')
     cursor=connect.cursor()
-    cursor.execute("Insert into autolog (logid,tsid,tsdesc,tcid,expectedres,actualres,runstatus,reference) values ("+qry+");")
+    cursor.execute("Insert into tb_log (logid,tsid,tsdesc,expectedresult,actualresult,runstatus,reference) values ("+qry+");")
     connect.commit()
     cursor.close()
     connect.close()
@@ -68,7 +68,7 @@ class associatelib:
     if failc==0 :
         strstatus = 'pass'
     sumtable='<table cellspacing=”2” width=”100%” border=”1”><tr><th style="background-color:#FFA500">LogID</th><th style="background-color:#FFA500" >Run status</th><th style="background-color:#FFA500">total testcases</th><th style="background-color:#FFA500">pass tc</th><th style="background-color:#FFA500">fail tc</th></tr><tr><th>'+logid+'</th><th>'+strstatus+'</th><th>'+str(totalc)+'</th><th>'+str(passc)+'</th><th>'+str(failc)+'</th></tr></table>'
-    valuestr='<html> <style> table, th, td {   border:1px solid black; } </style> <body>     <h1>Run Report</h1>  <h2>Run Summary</h2> '+ sumtable +'<h2>Run Details</h2> <table cellspacing=”0” cellpadding=”0” width=”100%” align=”center” border=”1”>       <tr><th style="background-color:#FA58F4">TestScenarioID</th><th style="background-color:#FA58F4">TestCaseID</th><th style="background-color:#FA58F4">TestStatus</th></tr>'+ valread  +' </table> </body> </html>'
+    valuestr='<html> <style> table, th, td {   border:1px solid black; } </style> <body>     <h1>Run Report</h1>  <h2>Run Summary</h2> '+ sumtable +'<h2>Run Details</h2> <table cellspacing=”0” cellpadding=”0” width=”100%” align=”center” border=”1”>       <tr><th style="background-color:#FA58F4">TestScenarioID</th><th style="background-color:#FA58F4">TestDescription</th><th style="background-color:#FA58F4">TestStatus</th></tr>'+ valread  +' </table> </body> </html>'
     valuestr = valuestr.replace(">pass", ' style="color: green">pass')
     valuestr = valuestr.replace(">'pass'", ' style="color: green">pass')
     valuestr = valuestr.replace(">fail", ' style="color: red">fail')

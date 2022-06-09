@@ -3,6 +3,7 @@ TBS-NEC_TS-009
 
 	${xml}=    Parse XML    ../Object Repository/1099Nec.xml
 	${wbook}=     Set Variable     ../Test Data/1099Series.xlsx
+	${logid}=     Get Environment Variable     logid
 	${obj_selectpayer}=    		Get Element Text    	${xml}   	selectpayer
 	${obj_psearch}=			Get Element Text	${xml}		psearch
 	${obj_spayer}=			Get Element Text	${xml}		spayer
@@ -42,10 +43,10 @@ TBS-NEC_TS-009
 	Execute Javascript  document.evaluate('${obj_rstate}', document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null).snapshotItem(0).click();
   	sleep   2s
 	Wait Until Element Is Enabled		//div[contains (text(), "Alaska (AK)")]
-	Click Element		//div[contains (text(), "Alaska (AK)")]
+	Click Element		//div[contains (text(), "Alabama (AL)")]
 
 	Input Text			${obj_nonemp}		${obj_nonemp1}	
-	Click Element			${obj_payersales}	
+	#Click Element			${obj_payersales}	
 	Input Text			${obj_fdwh}		${obj_fdwh1}                              
 	Click Element       ${obj_saveadd}
 	sleep	5s
@@ -54,7 +55,8 @@ TBS-NEC_TS-009
 	${passed} =    Run Keyword And Return Status         Wait Until Element Is Enabled       ${obj_addresscont}    10s
 	Run Keyword If    ${passed}    Click Element   ${obj_addresscont}
 	Execute JavaScript    window.document.evaluate('${obj_recitin}', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.scrollIntoView(true); 
-	if (${obj_recitin}.startswith('666') || ${obj_recitin}.startswith('9')	:
-		Page Should Contain Element	Recipient's SSN should not begin with 666 or 9
-	Capture Page Screenshot 	${CURDIR}/Screenshot/TBS-NEC_TS-009.png
+	#if (${obj_recitin}.startswith('666') || ${obj_recitin}.startswith('9')	:
+	Page Should Contain Element	Recipient's SSN should not begin with 666 or 9
+	Run Keyword Unless    ${passed}       Capture Page Screenshot     ../Support/Screenshots/${logid}_TBS-NEC_TS-009.png
+  	Run Keyword Unless    ${passed}      writelog    '${logid}','TBS-NEC_TS-009','Create form with Recipient TIN starts with 666/9 ','Error message should be shown','Error message is shown','Pass','${logid}_TBS-NEC_TS-009.png'
 	

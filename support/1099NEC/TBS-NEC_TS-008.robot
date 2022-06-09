@@ -3,6 +3,7 @@ TBS-NEC_TS-008
 
 	${xml}=    Parse XML    ../Object Repository/1099Nec.xml
 	${wbook}=     Set Variable     ../Test Data/1099Series.xlsx
+	${logid}=     Get Environment Variable     logid
 	${obj_selectpayer}=    		Get Element Text    	${xml}   	selectpayer
 	${obj_psearch}=			Get Element Text	${xml}		psearch
 	${obj_spayer}=			Get Element Text	${xml}		spayer
@@ -44,8 +45,10 @@ TBS-NEC_TS-008
 	Input Text			${obj_nonemp}		${obj_nonemp1}	
 	Input Text			${obj_fdwh}		${obj_fdwh1}                              
 	Click Element       ${obj_saveadd}
+	sleep	5s
 	Execute JavaScript    window.document.evaluate("//label[contains(text(),"Recipient's SSN")]/following-sibling::input", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.scrollIntoView(true);
-	sleep	15s
+	sleep	10s
 	Page Should Contain Element	Recipient's SSN required
-	Capture Page Screenshot 	${CURDIR}/Screenshot/TBS-NEC_TS-008.png
+	Run Keyword Unless    ${passed}       Capture Page Screenshot     ../Support/Screenshots/${logid}_TBS-NEC_TS-008.png
+  	Run Keyword Unless    ${passed}      writelog    '${logid}','TBS-NEC_TS-008','Create form without Recipient TIN ','Error message should be shown','Error message is shown','Pass','${logid}_TBS-NEC_TS-008.png'
 	

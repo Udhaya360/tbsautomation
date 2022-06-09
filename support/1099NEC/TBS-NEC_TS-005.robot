@@ -3,6 +3,7 @@ TBS-NEC_TS-005
 
 	${xml}=    Parse XML    ../Object Repository/1099Nec.xml
 	${wbook}=     Set Variable     ../Test Data/1099Series.xlsx
+	${logid}=     Get Environment Variable     logid
 	${obj_selectpayer}=    		Get Element Text    	${xml}   	selectpayer
 	${obj_psearch}=			Get Element Text	${xml}		psearch
 	${obj_spayer}=			Get Element Text	${xml}		spayer
@@ -40,8 +41,11 @@ TBS-NEC_TS-005
 	Input Text			${obj_fdwh}		${obj_fdwh1}
 	
 	Click Element       ${obj_saveadd}
-	sleep	5s
+	
 	${passed} =    Run Keyword And Return Status         Wait Until Element Is Enabled       ${obj_addressent}    10s
 	Run Keyword If    ${passed}    Click Element   ${obj_addressent}
 	${passed} =    Run Keyword And Return Status         Wait Until Element Is Enabled       ${obj_addresscont}    10s
 	Run Keyword If    ${passed}    Click Element   ${obj_addresscont} 
+	Run Keyword Unless    ${passed}       Capture Page Screenshot     ../Support/Screenshots/${logid}_TBS-NEC_TS-005.png
+	sleep	5s
+  	Run Keyword Unless    ${passed}      writelog    '${logid}','TBS-NEC_TS-005','Create form with Recipient TIN not provided','NEC form should be created','NEC form is created','Pass','${logid}_TBS-NEC_TS-005.png'

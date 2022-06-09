@@ -3,6 +3,7 @@ TBS-NEC_TS-001
 
 	${xml}=    Parse XML    ../Object Repository/1099Nec.xml
 	${wbook}=     Set Variable     ../Test Data/1099Series.xlsx
+	${logid}=     Get Environment Variable     logid
 	${obj_nec}=		Get Element Text    	${xml}   	nec
 	${obj_necbt}=		Get Element Text    	${xml}   	necbt
 	${obj_manualb}=		Get Element Text    	${xml}   	manualb
@@ -49,10 +50,12 @@ TBS-NEC_TS-001
 		
 	
 	Click Element       ${obj_saveadd}
-	sleep	5s
+	
 	${passed} =    Run Keyword And Return Status         Wait Until Element Is Enabled       ${obj_addressent}    10s
 	Run Keyword If    ${passed}    Click Element   ${obj_addressent}
 	${passed} =    Run Keyword And Return Status         Wait Until Element Is Enabled       ${obj_addresscont}    10s
 	Run Keyword If    ${passed}    Click Element   ${obj_addresscont} 
-	#Log	TBS-NEC_TS-001 executed successfully
+	Run Keyword Unless    ${passed}       Capture Page Screenshot     ../Support/Screenshots/${logid}_TBS-NEC_TS-001.png
+	sleep	5s
+  	Run Keyword Unless    ${passed}      writelog    '${logid}','TBS-NEC_TS-001','Create Form with USPS Address','NEC form should be created with USPS address','NEC form is created with USPS address','pass','${logid}_TBS-NEC_TS-001.png'
  
