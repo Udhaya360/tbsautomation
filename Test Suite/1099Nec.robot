@@ -4,22 +4,24 @@ Resource   ../Support/Nec_support.robot
 
 *** Test Cases ***
 Login in to account
+	ssettings
  	${xml}=    Parse XML    ../Object Repository/login.xml
-	${obj_email}=    	Get Element Text    	${xml}   	email 
-	${obj_pass}=		Get Element Text    	${xml}   	password
-	${obj_signin}=		Get Element Text    	${xml}   	login
-	${wbook}=     Set Variable     ../Test Data/1099Series.xlsx
-	Open Workbook      ${wbook}
- 	${accEmail}=	Get cell value    2    A   1099Nec
-	${accPassword}=	Get cell value    2    B   1099Nec
-	${siteURL}=	Get cell value    8    A   1099Nec
-
+	
+	${obj_email}=    	fndbget      select objvalue from tb_autoobj where objname='uid'
+	${obj_pass}=		fndbget      select objvalue from tb_autoobj where objname='pwd'
+	${obj_signin}=		fndbget      select objvalue from tb_autoobj where objname='signin'
+  ${wbook}=     Set Variable     ../Test Data/1099Series.xlsx
+  Open Workbook      ${wbook}
+	${accEmail}=       fndbget      select Userid from tb_autodata where SiteName='UAT_NEC'
+	${accPass}=       fndbget      select pwd from tb_autodata where SiteName='UAT_NEC'
+	${siteURL}=       fndbget      select Siteid from tb_autodata where SiteName='UAT_NEC'
 	Open Browser          ${siteURL}	 Chrome
 	Maximize Browser Window
 	input text			${obj_email}		${accEmail}
-	input text			${obj_pass}		${accPassword}
+	input text			${obj_pass}		${accPass}
 	sleep	15s
 	Click button			${obj_signin}
+	
   Sleep  20s
 Click Form 1099-NEC
   ${passed}=        Select_Form
@@ -51,6 +53,8 @@ Test Scenario TBS-NEC_TS-008
 Test Scenario TBS-NEC_TS-009
   ${passed}=        TBS-NEC_TS-009
 
- 
+createlog
+  ${logid}=     Get Environment Variable     logid
+  createh   ${logid}
 
  
